@@ -1,0 +1,94 @@
+.coin {
+  font-family: "Circular Std", sans-serif;
+  margin-top: 10px;
+  padding: 0 16px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+  }
+
+  &__img {
+    height: 24px;
+    margin-right: 5px;
+  }
+
+  &__vector {
+    height: 22px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  &__name {
+    font-size: 16px;
+    color: #212529;
+
+    &>span {
+      font-size: 10px;
+      color: #6C757D;
+      margin-left: 4px;
+    }
+  }
+
+  &__price {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+
+    &_main {
+      font-size: 24px;
+      font-weight: 500;
+      color: #212529;
+      margin-right: 12px;
+    }
+
+    &_percentage {
+      font-size: 16px;
+      font-weight: 450;
+
+      &.price_green {
+        color: #21BF73;
+      }
+
+      &.price_red {
+        color: #bf2121;
+      }
+    }
+  }
+
+  &__list {
+    margin-top: 16px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    padding: 11px 0;
+    border-bottom: 1px solid#DFE2E4;
+    font-size: 14px;
+
+    &>*:first-child {
+      color: #6C757D;
+    }
+
+    &>*:last-child {
+      color: #212529;
+    }
+  }
+
+  &__description {
+    margin-top: 20px;
+
+    &>h2 {
+      font-size: 16px;
+      color: #6C757D;
+      margin-bottom: 8px;
+    }
+
+    &>p {
+      font-size: 14px;
+      color: #212529;
+      word-break: break-all;
+    }
+  }
+}

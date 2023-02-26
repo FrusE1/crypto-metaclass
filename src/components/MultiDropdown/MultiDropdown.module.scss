@@ -1,0 +1,99 @@
+.multiDropdown {
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  font-family: 'Circular Std', sans-serif;
+  font-size: 12px;
+  min-width: 226px;
+  min-height: 22px;
+
+  &__button {
+    position: relative;
+    font-size: 12px;
+    display: block;
+    color: #343A40;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    background-color: #FFFFFF;
+    border: 0.5px solid #DFE2E4;
+    padding: 5px 8px;
+    border-radius: 12px;
+    background-image: url('./images/Vector.svg');
+    background-repeat: no-repeat;
+    background-position: 97.5% 50%;
+    background-size: 7px;
+    cursor: pointer;
+
+    &:hover {
+      border: 0.5px solid #6C757D;
+    }
+
+    &.dropdown_disabled {
+      background-color: #F8F9FA;
+      border: 0.5px solid #DFE2E4;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    border-radius: 12px;
+    width: 100%;
+    max-height: 125px;
+    overflow: auto;
+    cursor: pointer;
+    border: 0.5px solid #DFE2E4;
+
+    // &::-webkit-scrollbar {
+    //   width: 10px;
+    //   background-color: #fff;
+    // }
+
+    // &::-webkit-scrollbar-thumb {
+    //   width: 4px;
+    //   background-color: #DFE2E4;
+    //   border-radius: 2px;
+    //   overflow: hidden;
+    // }
+
+    &_label {
+      position: relative;
+      border-bottom: 0.5px solid #DFE2E4;
+
+      &:first-child {
+        border-radius: 12px 12px 0 0;
+      }
+
+      &:last-child {
+        border-radius: 0 0 12px 12px;
+        border-bottom: 0px;
+      }
+
+    }
+
+    &_input {
+      position: absolute;
+      appearance: none;
+
+      &:checked+.multiDropdown__list-item {
+        background-color: #F8F9FA;
+      }
+    }
+
+    &_item {
+      font-size: 12px;
+      padding: 5px 8px;
+      text-align: start;
+      background-color: #fff;
+
+      &:hover,
+      &:focus {
+        background-color: #F8F9FA;
+      }
+    }
+  }
+}
