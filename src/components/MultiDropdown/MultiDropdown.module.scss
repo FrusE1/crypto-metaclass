@@ -4,7 +4,7 @@
   box-sizing: border-box;
   font-family: 'Circular Std', sans-serif;
   font-size: 12px;
-  min-width: 226px;
+  max-width: 320px;
   min-height: 22px;
 
   &__button {
@@ -13,16 +13,20 @@
     display: block;
     color: #343A40;
     width: 100%;
-    height: 100%;
+    min-width: 226px;
     text-align: left;
     background-color: #FFFFFF;
     border: 0.5px solid #DFE2E4;
     padding: 5px 8px;
+    padding-right: 20px;
     border-radius: 12px;
     background-image: url('./images/Vector.svg');
     background-repeat: no-repeat;
     background-position: 97.5% 50%;
     background-size: 7px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     cursor: pointer;
 
     &:hover {
@@ -47,18 +51,7 @@
     overflow: auto;
     cursor: pointer;
     border: 0.5px solid #DFE2E4;
-
-    // &::-webkit-scrollbar {
-    //   width: 10px;
-    //   background-color: #fff;
-    // }
-
-    // &::-webkit-scrollbar-thumb {
-    //   width: 4px;
-    //   background-color: #DFE2E4;
-    //   border-radius: 2px;
-    //   overflow: hidden;
-    // }
+    z-index: 100;
 
     &_label {
       position: relative;
@@ -79,7 +72,7 @@
       position: absolute;
       appearance: none;
 
-      &:checked+.multiDropdown__list-item {
+      &:checked+.multiDropdown__list_item {
         background-color: #F8F9FA;
       }
     }

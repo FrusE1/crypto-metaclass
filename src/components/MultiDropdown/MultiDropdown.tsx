@@ -38,14 +38,14 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
     setIsVisible(isVisible ? false : true);
   };
 
+  const isChecked = (value: Option[], key: string): boolean => {
+    return !!value.find((item) => item.key === key);
+  };
+
   const changeValue = (value: Option[], item: Option): Option[] => {
     return value.find((i) => i.key === item.key)
       ? value.filter((i) => i.key !== item.key)
       : [...value, { key: item.key, value: item.value }];
-  };
-
-  const isChecked = (value: Option[], key: string): boolean => {
-    return !!value.find((item) => item.key === key);
   };
 
   return (

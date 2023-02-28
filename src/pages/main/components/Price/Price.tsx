@@ -1,6 +1,6 @@
 import React from "react";
 
-import formatPrice from "@utils/formatPrice";
+import formatNumber from "@utils/formatNumber";
 
 import styles from "./Price.module.scss";
 
@@ -16,7 +16,7 @@ export type PriceProps = {
 const Price: React.FC<PriceProps> = ({ price, percentage }: PriceProps) => {
   return (
     <div className={styles.price}>
-      <div className={styles.price_top}>${formatPrice(Number(price))}</div>
+      <div className={styles.price_top}>${formatNumber(Number(price))}</div>
       <div
         className={classNames(
           styles.price_bottom,
@@ -24,7 +24,7 @@ const Price: React.FC<PriceProps> = ({ price, percentage }: PriceProps) => {
         )}
       >
         {Number(percentage) > 0 && "+"}
-        {formatPrice(Number(percentage))}%
+        {formatNumber(Number(percentage))}%
       </div>
     </div>
   );

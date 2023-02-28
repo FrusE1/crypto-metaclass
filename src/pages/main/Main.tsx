@@ -2,7 +2,7 @@ import React from "react";
 
 import Filter from "./components/Filter";
 import ListCoins from "./components/ListCoins";
-import Header from "./components/Search";
+import Search from "./components/Search";
 import Select from "./components/Select";
 import styles from "./Main.module.scss";
 
@@ -18,7 +18,7 @@ const Main = () => {
 
   return (
     <div className={styles.main}>
-      <Header />
+      <Search />
       <Select />
       <Filter
         values={filterCategory}

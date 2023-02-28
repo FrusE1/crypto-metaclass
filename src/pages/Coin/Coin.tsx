@@ -1,15 +1,15 @@
 import React from "react";
 
-import vector from "@assets/Vector.svg";
-import formatPrice from "@utils/formatPrice";
+import formatPrice from "@utils/formatNumber";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import styles from "./Coin.module.scss";
+import CoinList from "./components/CoinList";
+import CoinPrice from "./components/CoinPrice";
+import HeaderCoin from "./components/HeaderCoin/HeaderCoin";
 
-var classNames = require("classnames");
-
-type Coin = {
+export type Coin = {
   image: string;
   name: string;
   symbol: string;
@@ -26,7 +26,6 @@ type Coin = {
 
 const CoinInfo = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
   const [coin, setCoin] = React.useState<Coin | null>(null);
 
   async function getCoinInfo(id: string | undefined) {
@@ -51,71 +50,18 @@ const CoinInfo = () => {
     });
   }
 
-  const goToPageMain = (): void => {
-    navigate("/");
-  };
-
   React.useEffect(() => {
     getCoinInfo(id);
-  }, []);
+  }, [id]);
 
   return (
     <div className={styles.coin}>
-      <div className={styles.coin__header}>
-        <img
-          className={styles.coin__vector}
-          onClick={() => goToPageMain()}
-          src={vector}
-        ></img>
-        <img
-          className={styles.coin__img}
-          src={coin?.image}
-          alt={coin?.name}
-        ></img>
-        <div className={styles.coin__name}>
-          {coin?.name}
-          <span>({coin?.symbol})</span>
-        </div>
-      </div>
-      <div className={styles.coin__price}>
-        <div className={styles.coin__price_main}>
-          ${formatPrice(Number(coin?.current_price))}
-        </div>
-        <div
-          className={classNames(
-            styles.coin__price_percentage,
-            Number(coin?.change) > 0 ? styles.price_green : styles.price_red
-          )}
-        >
-          {+formatPrice(Number(coin?.change)) > 0 && "+"}
-          {coin?.change} ({formatPrice(Number(coin?.percentage))}%)
-        </div>
-      </div>
-      <ul className={styles.coin__list}>
-        <li className={styles.coin__item}>
-          <div>Market Cap</div>
-          <div>${formatPrice(Number(coin?.market_cap))}</div>
-        </li>
-        <li className={styles.coin__item}>
-          <div>Fully Diluted Valuation</div>
-          <div>${formatPrice(Number(coin?.fully_diluted_valuation))}</div>
-        </li>
-        <li className={styles.coin__item}>
-          <div>Circulating Supply</div>
-          <div>{formatPrice(Number(coin?.circulating_supply))}</div>
-        </li>
-        <li className={styles.coin__item}>
-          <div>Total Supply</div>
-          <div>{formatPrice(Number(coin?.total_supply))}</div>
-        </li>
-        <li className={styles.coin__item}>
-          <div>Max Supply</div>
-          <div>{formatPrice(Number(coin?.max_supply))}</div>
-        </li>
-      </ul>
+      <HeaderCoin coin={coin} />
+      <CoinPrice coin={coin} />
+      <CoinList coin={coin} />
       <div className={styles.coin__description}>
         <h2>Description</h2>
-        <p>{coin?.description}</p>
+        <p>{coin?.description || ""}</p>
       </div>
     </div>
   );

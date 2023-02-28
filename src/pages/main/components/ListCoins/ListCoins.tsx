@@ -6,14 +6,22 @@ import { useNavigate } from "react-router-dom";
 
 import styles from "./ListCoins.module.scss";
 import Price from "../Price";
-import { ResponseApi } from "../Select/Select";
+
+export type ListCoinEntity = {
+  id: string;
+  image: string;
+  name: string;
+  symbol: string;
+  current_price: string;
+  price_change_percentage_24h: string;
+};
 
 const ListCoins = () => {
-  const [coins, setCoins] = React.useState<Array<Record<string, string>>>([]);
+  const [coins, setCoins] = React.useState<Array<ListCoinEntity>>([]);
   const navigate = useNavigate();
 
   async function getCoins() {
-    let coins: ResponseApi = await axios.get(
+    let coins = await axios.get(
       "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd"
     );
     setCoins(coins.data);

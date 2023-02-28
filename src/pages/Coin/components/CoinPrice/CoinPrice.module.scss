@@ -1,0 +1,24 @@
+.coinPrice {
+  display: flex;
+  align-items: center;
+
+  &__main {
+    font-size: 24px;
+    font-weight: 500;
+    color: #212529;
+    margin-right: 12px;
+  }
+
+  &__percentage {
+    font-size: 16px;
+    font-weight: 450;
+
+    &.price_green {
+      color: #21BF73;
+    }
+
+    &.price_red {
+      color: #bf2121;
+    }
+  }
+}
