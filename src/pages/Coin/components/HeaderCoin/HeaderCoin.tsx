@@ -1,7 +1,7 @@
 import React from "react";
 
-import vector from "@assets/Vector.svg";
-import { Coin } from "@pages/Coin/Coin";
+import arrow from "@assets/arrow.svg";
+import { CoinModel } from "@store/models/coin";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./HeaderCoin.module.scss";
@@ -9,7 +9,7 @@ import styles from "./HeaderCoin.module.scss";
 /** Пропсы, которые принимает компонент HeaderCoin */
 export type HeaderCoinProps = {
   /** Информация о криптовалюте */
-  coin: Coin | null;
+  coin: CoinModel;
 };
 
 const HeaderCoin: React.FC<HeaderCoinProps> = ({ coin }: HeaderCoinProps) => {
@@ -23,17 +23,17 @@ const HeaderCoin: React.FC<HeaderCoinProps> = ({ coin }: HeaderCoinProps) => {
       <img
         className={styles.headerCoin__vector}
         onClick={() => goToPageMain()}
-        src={vector}
-        alt="vector"
-      ></img>
+        src={arrow}
+        alt="coin arrow"
+      />
       <img
         className={styles.headerCoin__img}
-        src={coin?.image}
-        alt={coin?.name}
-      ></img>
+        src={coin.image.thumb}
+        alt={coin.name}
+      />
       <div className={styles.headerCoin__name}>
-        {coin?.name}
-        <span>({coin?.symbol})</span>
+        {coin.name}
+        <span>({coin.symbol})</span>
       </div>
     </div>
   );

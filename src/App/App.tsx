@@ -1,19 +1,19 @@
 import React from "react";
 
-import "./App.css";
 import Coin from "@pages/Coin";
 import Main from "@pages/main";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useQueryParamsStoreInit } from "@store/RootStore/hooks/useQueryParamsStoreInit";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
+  useQueryParamsStoreInit();
+
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/coins/:id" element={<Coin />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/coins/:id" element={<Coin />} />
+      </Routes>
     </div>
   );
 }

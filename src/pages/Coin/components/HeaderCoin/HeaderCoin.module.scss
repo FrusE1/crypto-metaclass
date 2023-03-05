@@ -1,3 +1,5 @@
+@import "@styles/variables";
+
 .headerCoin {
   display: flex;
   align-items: center;
@@ -14,12 +16,13 @@
   }
 
   &__name {
-    font-size: 16px;
-    color: #212529;
+    @include text-m();
+    color: $black;
 
     &>span {
-      font-size: 10px;
-      color: #6C757D;
+      text-transform: uppercase;
+      @include text-xs();
+      color: $gray;
       margin-left: 4px;
     }
   }

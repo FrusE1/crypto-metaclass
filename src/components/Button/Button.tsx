@@ -1,9 +1,10 @@
 import React from "react";
 
-import styles from "./Button.module.scss";
+import Loader from "@components/Loader";
+import { LoaderSize } from "@components/Loader/Loader";
+import classNames from "classnames";
 
-// import { Loader, LoaderSize } from '../Loader/Loader';
-var classNames = require("classnames");
+import styles from "./Button.module.scss";
 
 export type ButtonProps = React.PropsWithChildren<{
   /**
@@ -25,14 +26,20 @@ const Button: React.FC<ButtonProps> = ({
       {...props}
       className={classNames(
         styles.button,
-        { button_disabled: props.disabled || loading },
-        props.className || ""
+        loading && styles.button_disabled,
+        props.className
       )}
     >
-      {/* {loading && <Loader loading size={LoaderSize.s} />} */}
+      {loading && (
+        <Loader
+          className={styles.loader}
+          loading={loading}
+          size={LoaderSize.s}
+        />
+      )}
       {children}
     </button>
   );
 };
 
-export default Button;
+export default React.memo(Button);

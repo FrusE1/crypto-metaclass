@@ -1,7 +1,10 @@
-const formatNumber = (number: number, options: object = {}): string => {
+const formatNumber = (
+  number: number,
+  { maximumFractionDigits = 2, ...rest }: Intl.NumberFormatOptions = {}
+): string => {
   return new Intl.NumberFormat("en", {
-    maximumFractionDigits: 2,
-    ...options,
+    maximumFractionDigits,
+    ...rest,
   }).format(number);
 };
 

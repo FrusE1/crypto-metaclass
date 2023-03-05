@@ -1,25 +1,25 @@
+@import "@styles/variables";
+
 .input {
   width: 100%;
-  box-sizing: border-box;
-  font-family: 'Circular Std', sans-serif;
-  font-size: 12px;
-  font-weight: 450;
-  color: #343A40;
+  @include text-s();
+  color: $blue-black;
   padding: 12px;
-  border: 1px solid #DFE2E4;
+  border: 1px solid $light-gray;
   border-radius: 4px;
   background-color: #fff;
 
   &_disabled {
-    background-color: #F8F9FA;
+    background-color: $white-gray;
+    pointer-events: none;
   }
 
   &:hover,
   &:focus {
-    border-color: #6C757D;
+    border-color: $gray;
   }
 
   &::placeholder {
-    color: #DFE2E4;
+    color: $light-gray;
   }
 }

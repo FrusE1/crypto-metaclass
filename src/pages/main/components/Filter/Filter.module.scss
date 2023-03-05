@@ -1,8 +1,10 @@
+@import "@styles/variables";
+
 .filter {
   color: #6C757D;
-  font-family: "Circular Std", sans-serif;
   font-weight: 500;
   margin-bottom: 20px;
+  // font-size: 14px;
 
   &__span {
     display: inline-block;
@@ -17,15 +19,15 @@
     appearance: none;
 
     &:checked+.filter__span {
-      color: #0063F5;
-      border-bottom: 3px solid #0063F5;
+      color: $blue;
+      border-bottom: 3px solid $blue;
     }
   }
 
   &__border {
     width: 200vw;
     transform: translateX(-50vw);
-    border-bottom: 1px solid #DFE2E4;
+    border-bottom: 1px solid $light-gray;
   }
 
 }

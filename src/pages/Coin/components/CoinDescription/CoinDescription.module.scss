@@ -1,0 +1,15 @@
+@import "@styles/variables";
+
+.coinDescription {
+
+  &>h2 {
+    @include text-m();
+    color: $gray;
+    margin-bottom: 8px;
+  }
+
+  &>p {
+    color: $black;
+    word-break: break-all;
+  }
+}

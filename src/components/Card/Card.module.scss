@@ -1,6 +1,7 @@
+@import "@styles/variables";
+
 .card {
   display: flex;
-  font-family: 'Circular Std', sans-serif;
   height: 72px;
   border-radius: 8px;
   padding: 16px;
@@ -15,8 +16,7 @@
     align-items: center;
 
     &__image {
-      width: 40px;
-      height: 40px;
+      @include square(40px);
       margin-right: 12px;
     }
 
@@ -27,17 +27,18 @@
     }
 
     &__title {
-      color: #212529;
-      font-size: 16px;
+      color: $black;
+      @include text-m();
     }
 
     &__subtitle {
-      font-size: 12px;
-      color: #6C757D;
+      text-transform: uppercase;
+      @include text-s();
+      color: $gray;
     }
   }
 
   &:hover {
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   }
 }

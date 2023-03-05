@@ -1,3 +1,5 @@
+@import "@styles/variables";
+
 .price {
   display: flex;
   flex-direction: column;
@@ -5,18 +7,18 @@
 
   &_top {
     color: #343A40;
-    font-size: 16px;
+    @include text-m();
   }
 
   &_bottom {
-    font-size: 10px;
+    @include text-xs();
 
     &.price_green {
-      color: #21BF73;
+      color: $green;
     }
 
     &.price_red {
-      color: rgb(228, 48, 48)
+      color: $red;
     }
   }
 }
