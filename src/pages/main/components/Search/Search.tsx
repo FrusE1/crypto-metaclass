@@ -8,7 +8,7 @@ import { useSearchParams } from "react-router-dom";
 
 import styles from "./Search.module.scss";
 
-const Header = () => {
+const Search = () => {
   const [value, setValue] = React.useState<string>("");
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -34,4 +34,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default React.memo(Search);

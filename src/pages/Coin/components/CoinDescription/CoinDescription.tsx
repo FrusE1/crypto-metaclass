@@ -1,5 +1,9 @@
 import React from "react";
 
+// Используя этот конвертер выдает ошибку
+// Ошибка "Первый аргумент должен быть строкой"
+import parse from "html-react-parser";
+
 import styles from "./CoinDescription.module.scss";
 
 /** Пропсы, которые принимает компонент CoinDescription */
@@ -19,4 +23,4 @@ const CoinDescription: React.FC<CoinDescriptionProps> = ({
   );
 };
 
-export default CoinDescription;
+export default React.memo(CoinDescription);

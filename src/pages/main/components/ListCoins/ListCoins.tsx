@@ -38,7 +38,7 @@ const ListCoins = () => {
 
   React.useEffect(() => {
     setSearchParams({ ...rootStore.query.params, page: "1" });
-  }, [setSearchParams]);
+  }, []);
 
   const goToPage = (id: string): void => {
     navigate(`/coins/${id}`);

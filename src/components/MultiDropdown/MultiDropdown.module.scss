@@ -72,10 +72,10 @@
     &_input {
       position: absolute;
       appearance: none;
+    }
 
-      &:checked#{&}_item {
-        background-color: $white-gray;
-      }
+    &_input:checked+#{&}_item {
+      background-color: $white-gray;
     }
 
     &_item {

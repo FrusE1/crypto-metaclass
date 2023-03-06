@@ -6,15 +6,10 @@ import Search from "./components/Search";
 import Select from "./components/Select";
 import styles from "./Main.module.scss";
 
+const filterCategory: Array<string> = ["All", "Gainer", "Loser", "Favourites"];
+
 const Main = () => {
   const [currentFilter, setCurrentFilter] = React.useState<string>("Gainer");
-
-  const filterCategory: Array<string> = [
-    "All",
-    "Gainer",
-    "Loser",
-    "Favourites",
-  ];
 
   return (
     <div className={styles.main}>

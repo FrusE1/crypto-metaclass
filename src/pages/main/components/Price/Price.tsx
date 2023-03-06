@@ -29,4 +29,4 @@ const Price: React.FC<PriceProps> = ({ price, percentage }: PriceProps) => {
   );
 };
 
-export default Price;
+export default React.memo(Price);
