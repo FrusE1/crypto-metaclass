@@ -13,12 +13,9 @@ const Search = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const setParams = React.useCallback(
-    (value: string) => {
-      setSearchParams({ ...rootStore.query.params, search: value });
-    },
-    [setSearchParams]
-  );
+  const setParams = (value: string) => {
+    setSearchParams({ ...rootStore.query.params, search: value, page: "1" });
+  };
 
   return (
     <div className={styles.search}>

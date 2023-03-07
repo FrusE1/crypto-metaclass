@@ -26,19 +26,15 @@ const ListCoins = () => {
   };
 
   React.useEffect(() => {
-    coinsStore.getCoins({
-      ...rootStore.query.params,
-      page:
-        coinsStore.totalCount / coinsStore.items.length >
-        Number(rootStore.query.params.page)
-          ? "1"
-          : rootStore.query.params.page,
-    });
+    if (!rootStore.query.params.page) {
+      setSearchParams({ page: "1", ...rootStore.query.params });
+    } else {
+      coinsStore.getCoins({
+        ...rootStore.query.params,
+        page: rootStore.query.params.page,
+      });
+    }
   }, [coinsStore, rootStore.query.params]);
-
-  React.useEffect(() => {
-    setSearchParams({ ...rootStore.query.params, page: "1" });
-  }, []);
 
   const goToPage = (id: string): void => {
     navigate(`/coins/${id}`);

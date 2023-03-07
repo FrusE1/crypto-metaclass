@@ -52,6 +52,7 @@ export default class CoinsStore implements ILocalStore {
 
     // Не очень решение, но до дедлайна только так работало
     // Плюс с апи нужные данные не все приходят
+    // Поэтому приходится лишние запросы делать
     try {
       const search = params.search !== "" ? params.search : null;
 
