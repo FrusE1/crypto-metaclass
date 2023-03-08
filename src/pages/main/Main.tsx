@@ -1,7 +1,7 @@
 import React from "react";
 
+import CoinsContainer from "./components/CoinsContainer";
 import Filter from "./components/Filter";
-import ListCoins from "./components/ListCoins";
 import Search from "./components/Search";
 import Select from "./components/Select";
 import styles from "./Main.module.scss";
@@ -21,7 +21,7 @@ const Main = () => {
         name="coins"
         onChange={setCurrentFilter}
       />
-      <ListCoins />
+      <CoinsContainer />
     </div>
   );
 };

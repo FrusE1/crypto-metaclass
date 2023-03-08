@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 import styles from "./Pagination.module.scss";
 
-/** Пропсы, которые принимает компонент CoinDescription */
+/** Пропсы, которые принимает компонент PaginationProps */
 export type PaginationProps = {
   /** Количество страниц */
   pages: number[];
