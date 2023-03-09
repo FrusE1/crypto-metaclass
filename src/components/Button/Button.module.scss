@@ -1,0 +1,26 @@
+.button {
+  font-family: "Circular Std", sans-serif;
+  color: #343A40;
+  padding: 8px;
+  background-color: #DFE2E4;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+
+  &>.loader {
+    margin-right: 6px;
+  }
+
+  &_disabled {
+    cursor: default;
+    opacity: 0.3;
+
+    &.button:hover {
+      opacity: 0.3;
+    }
+  }
+
+  &:hover {
+    opacity: 0.5;
+  }
+}

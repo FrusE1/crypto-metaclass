@@ -1,0 +1,25 @@
+.input {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Circular Std', sans-serif;
+  font-size: 12px;
+  font-weight: 450;
+  color: #343A40;
+  padding: 12px;
+  border: 1px solid #DFE2E4;
+  border-radius: 4px;
+  background-color: #fff;
+
+  &_disabled {
+    background-color: #F8F9FA;
+  }
+
+  &:hover,
+  &:focus {
+    border-color: #6C757D;
+  }
+
+  &::placeholder {
+    color: #DFE2E4;
+  }
+}

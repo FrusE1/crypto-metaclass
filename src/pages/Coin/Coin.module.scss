@@ -1,0 +1,25 @@
+.coin {
+  font-family: "Circular Std", sans-serif;
+  margin-top: 10px;
+  padding: 0 16px;
+
+  &>*:not(:last-child) {
+    margin-bottom: 16px;
+  }
+
+
+  &__description {
+
+    &>h2 {
+      font-size: 16px;
+      color: #6C757D;
+      margin-bottom: 8px;
+    }
+
+    &>p {
+      font-size: 14px;
+      color: #212529;
+      word-break: break-all;
+    }
+  }
+}

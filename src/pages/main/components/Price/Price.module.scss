@@ -1,0 +1,22 @@
+.price {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+
+  &_top {
+    color: #343A40;
+    font-size: 16px;
+  }
+
+  &_bottom {
+    font-size: 10px;
+
+    &.price_green {
+      color: #21BF73;
+    }
+
+    &.price_red {
+      color: rgb(228, 48, 48)
+    }
+  }
+}
