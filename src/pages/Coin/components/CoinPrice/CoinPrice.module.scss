@@ -1,0 +1,26 @@
+@import "@styles/variables";
+
+.coinPrice {
+  display: flex;
+  align-items: center;
+
+  &__main {
+    @include text-xl();
+    font-weight: 500;
+    color: $black;
+    margin-right: 12px;
+  }
+
+  &__percentage {
+    @include text-m;
+    font-weight: 450;
+
+    &.green {
+      color: $green;
+    }
+
+    &.red {
+      color: $red;
+    }
+  }
+}

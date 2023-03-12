@@ -1,0 +1,93 @@
+@import "@styles/variables";
+
+.multiDropdown {
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  @include text-s;
+  max-width: 320px;
+  min-height: 22px;
+
+  &__button {
+    position: relative;
+    @include text-s;
+    display: block;
+    color: $blue-black;
+    width: 100%;
+    min-width: 226px;
+    text-align: left;
+    background-color: #fff;
+    border: 0.5px solid $light-gray;
+    padding: 5px 8px;
+    padding-right: 20px;
+    border-radius: 12px;
+    background-image: url('./images/triangle.svg');
+    background-repeat: no-repeat;
+    background-position: 97.5% 50%;
+    background-size: 7px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+
+    &:hover {
+      border: 0.5px solid $gray;
+    }
+
+    &.dropdown_disabled {
+      background-color: $white-gray;
+      border: 0.5px solid $light-gray;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    border-radius: 12px;
+    width: 100%;
+    max-height: 125px;
+    overflow: auto;
+    cursor: pointer;
+    border: 0.5px solid $light-gray;
+    z-index: 100;
+
+    &_label {
+      position: relative;
+      border-bottom: 0.5px solid $light-gray;
+
+      &:first-child {
+        border-radius: 12px 12px 0 0;
+      }
+
+      &:last-child {
+        border-radius: 0 0 12px 12px;
+        border-bottom: 0px;
+      }
+
+    }
+
+    &_input {
+      position: absolute;
+      appearance: none;
+    }
+
+    &_input:checked+#{&}_item {
+      background-color: $white-gray;
+    }
+
+    &_item {
+      @include text-s;
+      padding: 5px 8px;
+      text-align: start;
+      background-color: #fff;
+
+      &:hover,
+      &:focus {
+        background-color: $white-gray;
+      }
+    }
+  }
+}

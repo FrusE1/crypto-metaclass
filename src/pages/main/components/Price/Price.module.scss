@@ -1,0 +1,27 @@
+@import "@styles/variables";
+
+.price {
+  display: flex;
+  flex-direction: column;
+
+  &>* {
+    text-align: end;
+  }
+
+  &_top {
+    color: #343A40;
+    @include text-m;
+  }
+
+  &_bottom {
+    @include text-xs;
+
+    &.green {
+      color: $green;
+    }
+
+    &.red {
+      color: $red;
+    }
+  }
+}

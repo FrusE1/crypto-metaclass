@@ -1,0 +1,41 @@
+// colors
+$white-gray: #F8F9FA;
+$light-gray: #DFE2E4;
+$gray: #6C757D;
+$blue-black: #343A40;
+$black: #212529;
+$green: #21BF73;
+$red: #bf2121;
+$blue: #0063F5;
+
+// font size mixins
+@mixin text-xs() {
+  font-size: 10px;
+  line-height: 13px;
+}
+
+@mixin text-s() {
+  font-size: 12px;
+  line-height: 15px;
+}
+
+@mixin text-m() {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+@mixin text-l() {
+  font-size: 18px;
+  line-height: 23px;
+}
+
+@mixin text-xl() {
+  font-size: 24px;
+  line-height: 30px;
+}
+
+// other
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}

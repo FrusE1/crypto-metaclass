@@ -1,0 +1,25 @@
+@import "@styles/variables";
+
+.button {
+  color: $blue-black;
+  padding: 8px;
+  background-color: $light-gray;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+
+  &_disabled {
+    cursor: default;
+    pointer-events: none;
+    opacity: 0.3;
+  }
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.loader {
+  margin-right: 6px;
+}

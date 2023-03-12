@@ -1,0 +1,12 @@
+@import "@styles/variables";
+
+.select {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+
+  &__title {
+    @include text-l;
+    font-weight: 500;
+  }
+}

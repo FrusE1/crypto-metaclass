@@ -1,0 +1,44 @@
+@import "@styles/variables";
+
+.card {
+  display: flex;
+  height: 72px;
+  border-radius: 8px;
+  padding: 16px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  cursor: pointer;
+  z-index: 100;
+
+  &Info {
+    display: flex;
+    align-items: center;
+
+    &__image {
+      @include square(40px);
+      margin-right: 12px;
+    }
+
+    &__text {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    &__title {
+      color: $black;
+      @include text-m;
+    }
+
+    &__subtitle {
+      text-transform: uppercase;
+      @include text-s;
+      color: $gray;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  }
+}

@@ -1,0 +1,16 @@
+@import "./null.scss";
+@import './CircularStd/fonts';
+
+body {
+  margin: 0;
+  font-family: "Circular Std", -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  line-height: 17.71px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

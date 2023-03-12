@@ -1,0 +1,29 @@
+@import "@styles/variables";
+
+.headerCoin {
+  display: flex;
+  align-items: center;
+
+  &__img {
+    height: 24px;
+    margin-right: 5px;
+  }
+
+  &__vector {
+    height: 22px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  &__name {
+    @include text-m;
+    color: $black;
+
+    &>span {
+      text-transform: uppercase;
+      @include text-xs;
+      color: $gray;
+      margin-left: 4px;
+    }
+  }
+}

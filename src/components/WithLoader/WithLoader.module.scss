@@ -1,0 +1,20 @@
+// Как сделать красиво анимацию (выравнивание лоадера, не ломая анимацию) не придумал
+
+.withLoader {
+  position: relative;
+  height: 80px;
+
+  &>*:last-child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: loader 1.5s linear infinite;
+  }
+}
+
+@keyframes loader {
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

@@ -1,0 +1,39 @@
+@import "@styles/variables";
+
+.loader {
+  box-sizing: border-box;
+  border-radius: 50%;
+  transform: rotate(40deg);
+  animation: loader 1.5s linear infinite;
+}
+
+.l {
+  @include square(60px);
+  border: 6px solid rgba(0, 0, 0, 0);
+  border-left-color: $gray;
+  border-top-color: $gray;
+  border-bottom-color: $gray;
+}
+
+.m {
+  @include square(40px);
+  border: 4.5px solid rgba(0, 0, 0, 0);
+  border-left-color: $gray;
+  border-top-color: $gray;
+  border-bottom-color: $gray;
+}
+
+.s {
+  @include square(20px);
+  border: 3px solid rgba(0, 0, 0, 0);
+  border-left-color: #6C757D;
+  border-top-color: #6C757D;
+  border-bottom-color: #6C757D;
+}
+
+
+@keyframes loader {
+  100% {
+    transform: rotate(400deg);
+  }
+}
