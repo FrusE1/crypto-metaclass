@@ -14,7 +14,12 @@ const CoinDescription: React.FC<CoinDescriptionProps> = ({
   return (
     <div className={styles.coinDescription}>
       <h2 className={styles.coinDescription__title}>Description</h2>
-      <p className={styles.coinDescription__subtitle}>{description}</p>
+      <p
+        className={styles.coinDescription__subtitle}
+        dangerouslySetInnerHTML={{
+          __html: description,
+        }}
+      ></p>
     </div>
   );
 };

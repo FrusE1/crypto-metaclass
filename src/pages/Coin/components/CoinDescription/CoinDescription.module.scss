@@ -11,10 +11,10 @@
   &__subtitle {
     color: $black;
     word-break: break-all;
-  }
 
-  &>a {
-    color: $blue;
-    text-decoration: underline;
+    &>a {
+      color: $blue;
+      text-decoration: underline;
+    }
   }
 }
