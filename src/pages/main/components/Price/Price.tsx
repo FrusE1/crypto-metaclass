@@ -1,10 +1,9 @@
 import React from "react";
 
 import formatNumber from "@utils/formatNumber";
+import classNames from "classnames";
 
 import styles from "./Price.module.scss";
-
-var classNames = require("classnames");
 
 export type PriceProps = {
   /** Текущая цена */
@@ -30,4 +29,4 @@ const Price: React.FC<PriceProps> = ({ price, percentage }: PriceProps) => {
   );
 };
 
-export default Price;
+export default React.memo(Price);

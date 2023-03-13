@@ -1,5 +1,7 @@
+@import "@styles/variables";
+
 .main {
   padding: 0 16px;
-  background-color: #F8F9FA;
-  overflow-y: hidden;
+  background-color: $white-gray;
+  overflow: hidden;
 }

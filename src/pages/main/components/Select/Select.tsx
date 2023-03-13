@@ -2,49 +2,38 @@ import React from "react";
 
 import MultiDropdown from "@components/MultiDropdown";
 import { Option } from "@components/MultiDropdown/MultiDropdown";
-import axios from "axios";
+import { useLocalStore } from "@hooks/useLocaleStore";
+import CoinsCategoryStore from "@store/CoinsCategoryStore";
+import { normalizeCoinsCategoryToOption } from "@store/models/coinsCategory";
+import { observer } from "mobx-react-lite";
 
 import styles from "./Select.module.scss";
-
-export type ResponseApi = {
-  status: string;
-  data: Array<Record<string, string>>;
-};
 
 const Select = () => {
   const defaultPluralizeOptions = (elements: Option[]) =>
     elements.map((el: Option) => el.key).join();
 
-  const [categories, setCategories] = React.useState<Option[]>([]);
   const [categoriesSelect, setCategoriesSelect] = React.useState<Option[]>([]);
 
-  async function getCategories() {
-    let categories: ResponseApi = await axios.get(
-      "https://api.coingecko.com/api/v3/coins/categories/list"
-    );
-    setCategories(
-      categories.data.map((item) => ({
-        key: item.category_id,
-        value: item.name,
-      }))
-    );
-  }
+  const coinsCategoryStore = useLocalStore(() => new CoinsCategoryStore());
 
   React.useEffect(() => {
-    getCategories();
-  }, []);
+    coinsCategoryStore.getCoinsCategory();
+  }, [coinsCategoryStore]);
 
   return (
     <div className={styles.select}>
       <div className={styles.select__title}>Coins</div>
       <MultiDropdown
         value={categoriesSelect}
-        options={categories}
+        options={normalizeCoinsCategoryToOption(
+          coinsCategoryStore.coinsCategory
+        )}
         onChange={setCategoriesSelect}
         pluralizeOptions={defaultPluralizeOptions}
-      ></MultiDropdown>
+      />
     </div>
   );
 };
 
-export default Select;
+export default observer(Select);

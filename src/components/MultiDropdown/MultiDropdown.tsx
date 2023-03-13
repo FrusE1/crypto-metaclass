@@ -1,8 +1,8 @@
 import React from "react";
 
-import styles from "./MultiDropdown.module.scss";
+import classNames from "classnames";
 
-var classNames = require("classnames");
+import styles from "./MultiDropdown.module.scss";
 
 export type Option = {
   /** Ключ варианта, используется для отправки на бек/использования в коде */
@@ -35,7 +35,7 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
   const [isVisible, setIsVisible] = React.useState<boolean>(false);
 
   const clickVisible = (): void => {
-    setIsVisible(isVisible ? false : true);
+    setIsVisible((prevIsVisible) => !prevIsVisible);
   };
 
   const isChecked = (value: Option[], key: string): boolean => {
@@ -43,7 +43,7 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
   };
 
   const changeValue = (value: Option[], item: Option): Option[] => {
-    return value.find((i) => i.key === item.key)
+    return isChecked(value, item.key)
       ? value.filter((i) => i.key !== item.key)
       : [...value, { key: item.key, value: item.value }];
   };

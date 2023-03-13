@@ -1,17 +1,17 @@
 import React from "react";
 
-import styles from "./Input.module.scss";
+import classNames from "classnames";
 
-var classNames = require("classnames");
+import styles from "./Input.module.scss";
 
 export type InputProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   "onChange" | "value"
 > & {
   /** Значение поля */
-  value?: string;
+  value: string;
   /** Callback, вызываемый при вводе данных в поле */
-  onChange?: (value: string) => void;
+  onChange: (value: string) => void;
 };
 
 const Input: React.FC<InputProps> = ({
@@ -25,9 +25,10 @@ const Input: React.FC<InputProps> = ({
       type="text"
       className={classNames(
         styles.input,
-        { input_disabled: props.disabled },
-        props.className || ""
+        props.disabled && styles.input_disabled,
+        props.className
       )}
+      onChange={(e) => onChange(e.target.value)}
       value={value}
     />
   );

@@ -28,9 +28,7 @@ const Card: React.FC<CardProps> = ({
         <img className={styles.cardInfo__image} src={image} alt="logo-card" />
         <div className={styles.cardInfo__text}>
           <div className={styles.cardInfo__title}>{title}</div>
-          <div className={styles.cardInfo__subtitle}>
-            {subtitle.toUpperCase()}
-          </div>
+          <div className={styles.cardInfo__subtitle}>{subtitle}</div>
         </div>
       </div>
       {content && <div className={styles.cardInfo__content}>{content}</div>}

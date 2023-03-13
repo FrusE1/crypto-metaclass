@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Coin } from "@pages/Coin/Coin";
+import { CoinModel } from "@store/models/coin";
 import formatNumber from "@utils/formatNumber";
 
 import styles from "./CoinList.module.scss";
@@ -8,7 +8,7 @@ import styles from "./CoinList.module.scss";
 /** Пропсы, которые принимает компонент CoinList */
 export type CoinListProps = {
   /** Информация о криптовалюте */
-  coin: Coin | null;
+  coin: CoinModel;
 };
 
 const CoinList: React.FC<CoinListProps> = ({ coin }: CoinListProps) => {
@@ -16,23 +16,25 @@ const CoinList: React.FC<CoinListProps> = ({ coin }: CoinListProps) => {
     <ul className={styles.coinList}>
       <li className={styles.coinList__item}>
         <div>Market Cap</div>
-        <div>${formatNumber(Number(coin?.market_cap))}</div>
+        <div>${formatNumber(Number(coin.marketData.marketCap.usd))}</div>
       </li>
       <li className={styles.coinList__item}>
         <div>Fully Diluted Valuation</div>
-        <div>${formatNumber(Number(coin?.fully_diluted_valuation))}</div>
+        <div>
+          ${formatNumber(Number(coin.marketData.fullyDilutedValuation.usd))}
+        </div>
       </li>
       <li className={styles.coinList__item}>
         <div>Circulating Supply</div>
-        <div>{formatNumber(Number(coin?.circulating_supply))}</div>
+        <div>{formatNumber(Number(coin.marketData.circulatingSupply))}</div>
       </li>
       <li className={styles.coinList__item}>
         <div>Total Supply</div>
-        <div>{formatNumber(Number(coin?.total_supply))}</div>
+        <div>{formatNumber(Number(coin.marketData.totalSupply))}</div>
       </li>
       <li className={styles.coinList__item}>
         <div>Max Supply</div>
-        <div>{formatNumber(Number(coin?.max_supply))}</div>
+        <div>{formatNumber(Number(coin.marketData.maxSupply))}</div>
       </li>
     </ul>
   );

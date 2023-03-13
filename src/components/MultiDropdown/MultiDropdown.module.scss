@@ -1,26 +1,27 @@
+@import "@styles/variables";
+
 .multiDropdown {
   display: inline-block;
   position: relative;
   box-sizing: border-box;
-  font-family: 'Circular Std', sans-serif;
-  font-size: 12px;
+  @include text-s();
   max-width: 320px;
   min-height: 22px;
 
   &__button {
     position: relative;
-    font-size: 12px;
+    @include text-s();
     display: block;
-    color: #343A40;
+    color: $blue-black;
     width: 100%;
     min-width: 226px;
     text-align: left;
-    background-color: #FFFFFF;
-    border: 0.5px solid #DFE2E4;
+    background-color: #fff;
+    border: 0.5px solid $light-gray;
     padding: 5px 8px;
     padding-right: 20px;
     border-radius: 12px;
-    background-image: url('./images/Vector.svg');
+    background-image: url('./images/triangle.svg');
     background-repeat: no-repeat;
     background-position: 97.5% 50%;
     background-size: 7px;
@@ -30,12 +31,12 @@
     cursor: pointer;
 
     &:hover {
-      border: 0.5px solid #6C757D;
+      border: 0.5px solid $gray;
     }
 
     &.dropdown_disabled {
-      background-color: #F8F9FA;
-      border: 0.5px solid #DFE2E4;
+      background-color: $white-gray;
+      border: 0.5px solid $light-gray;
     }
   }
 
@@ -50,12 +51,12 @@
     max-height: 125px;
     overflow: auto;
     cursor: pointer;
-    border: 0.5px solid #DFE2E4;
+    border: 0.5px solid $light-gray;
     z-index: 100;
 
     &_label {
       position: relative;
-      border-bottom: 0.5px solid #DFE2E4;
+      border-bottom: 0.5px solid $light-gray;
 
       &:first-child {
         border-radius: 12px 12px 0 0;
@@ -71,21 +72,21 @@
     &_input {
       position: absolute;
       appearance: none;
+    }
 
-      &:checked+.multiDropdown__list_item {
-        background-color: #F8F9FA;
-      }
+    &_input:checked+#{&}_item {
+      background-color: $white-gray;
     }
 
     &_item {
-      font-size: 12px;
+      @include text-s();
       padding: 5px 8px;
       text-align: start;
       background-color: #fff;
 
       &:hover,
       &:focus {
-        background-color: #F8F9FA;
+        background-color: $white-gray;
       }
     }
   }
