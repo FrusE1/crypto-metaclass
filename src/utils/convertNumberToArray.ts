@@ -1,6 +1,6 @@
 const convertNumberToArray = (number: number): number[] => {
   const array: number[] = [];
-  for (let i = 1; i <= number; i++) {
+  for (let i = 1; i <= Math.ceil(number); i++) {
     array.push(i);
   }
   return array;

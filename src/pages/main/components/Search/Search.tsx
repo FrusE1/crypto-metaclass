@@ -8,14 +8,14 @@ import { useSearchParams } from "react-router-dom";
 
 import styles from "./Search.module.scss";
 
-const Search = () => {
+/** Пропсы, которые принимает компонент Search */
+export type SearchProps = {
+  /** Функция для поиска */
+  setSearch: (search: string) => void;
+};
+
+const Search: React.FC<SearchProps> = ({ setSearch }: SearchProps) => {
   const [value, setValue] = React.useState<string>("");
-
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const setParams = React.useCallback((value: string) => {
-    setSearchParams({ ...rootStore.query.params, search: value, page: "1" });
-  }, []);
 
   return (
     <div className={styles.search}>
@@ -24,7 +24,7 @@ const Search = () => {
         onChange={setValue}
         placeholder="Search Cryptocurrency"
       />
-      <Button onClick={() => setParams(value)}>
+      <Button onClick={React.useCallback(() => setSearch(value), [value])}>
         <img className={styles.search__img} src={searchSvg} alt="search" />
       </Button>
     </div>

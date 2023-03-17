@@ -15,7 +15,7 @@ export type HeaderCoinProps = {
 const HeaderCoin: React.FC<HeaderCoinProps> = ({ coin }: HeaderCoinProps) => {
   const navigate = useNavigate();
   const goToPageMain = (): void => {
-    navigate("/");
+    navigate(-1);
   };
 
   return (
