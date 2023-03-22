@@ -2,11 +2,7 @@
 
 .input {
   width: 100%;
-<<<<<<< HEAD
-  @include text-s();
-=======
   @include text-s;
->>>>>>> 6499884 (hw-5)
   color: $blue-black;
   padding: 12px;
   border: 1px solid $light-gray;

@@ -3,12 +3,7 @@
 .pagination {
   display: flex;
   justify-content: center;
-<<<<<<< HEAD
-  height: 90px;
-  @include text-l();
-=======
   @include text-l;
->>>>>>> 6499884 (hw-5)
 
   &>* {
     display: flex;
@@ -21,10 +16,7 @@
     @include square(36px);
     cursor: pointer;
     border-radius: 50%;
-<<<<<<< HEAD
-=======
     margin: 20px 0;
->>>>>>> 6499884 (hw-5)
 
     &:hover,
     &:focus {

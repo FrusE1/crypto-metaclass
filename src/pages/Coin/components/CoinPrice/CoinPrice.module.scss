@@ -12,16 +12,6 @@
   }
 
   &__percentage {
-<<<<<<< HEAD
-    @include text-m();
-    font-weight: 450;
-
-    &.price_green {
-      color: $green;
-    }
-
-    &.price_red {
-=======
     @include text-m;
     font-weight: 450;
     padding-bottom: 2px;
@@ -31,7 +21,6 @@
     }
 
     &.red {
->>>>>>> 6499884 (hw-5)
       color: $red;
     }
   }

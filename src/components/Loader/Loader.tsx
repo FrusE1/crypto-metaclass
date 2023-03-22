@@ -10,11 +10,6 @@ export enum LoaderSize {
   l = "l",
 }
 
-<<<<<<< HEAD
-export type LoaderProps = {
-  loading: boolean;
-  size?: LoaderSize;
-=======
 /** Пропсы, которые принимает компонент Loader */
 export type LoaderProps = {
   /** Статус загрузки лоадера */
@@ -22,7 +17,6 @@ export type LoaderProps = {
   /** Размер лоадера */
   size?: LoaderSize;
   /** Дополнительный класс для стилизации */
->>>>>>> 6499884 (hw-5)
   className?: string;
 };
 

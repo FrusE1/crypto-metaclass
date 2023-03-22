@@ -3,23 +3,6 @@
 .price {
   display: flex;
   flex-direction: column;
-<<<<<<< HEAD
-  align-items: end;
-
-  &_top {
-    color: #343A40;
-    @include text-m();
-  }
-
-  &_bottom {
-    @include text-xs();
-
-    &.price_green {
-      color: $green;
-    }
-
-    &.price_red {
-=======
 
   &>* {
     text-align: end;
@@ -38,7 +21,6 @@
     }
 
     &.red {
->>>>>>> 6499884 (hw-5)
       color: $red;
     }
   }

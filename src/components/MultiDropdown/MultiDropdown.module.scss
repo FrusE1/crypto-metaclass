@@ -4,21 +4,13 @@
   display: inline-block;
   position: relative;
   box-sizing: border-box;
-<<<<<<< HEAD
-  @include text-s();
-=======
   @include text-s;
->>>>>>> 6499884 (hw-5)
   max-width: 320px;
   min-height: 22px;
 
   &__button {
     position: relative;
-<<<<<<< HEAD
-    @include text-s();
-=======
     @include text-s;
->>>>>>> 6499884 (hw-5)
     display: block;
     color: $blue-black;
     width: 100%;
@@ -87,11 +79,7 @@
     }
 
     &_item {
-<<<<<<< HEAD
-      @include text-s();
-=======
       @include text-s;
->>>>>>> 6499884 (hw-5)
       padding: 5px 8px;
       text-align: start;
       background-color: #fff;

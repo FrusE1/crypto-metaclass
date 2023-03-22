@@ -7,11 +7,7 @@
   margin-bottom: 24px;
 
   &__title {
-<<<<<<< HEAD
-    @include text-l();
-=======
     @include text-l;
->>>>>>> 6499884 (hw-5)
     font-weight: 500;
   }
 }

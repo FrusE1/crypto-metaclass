@@ -13,11 +13,6 @@
   margin-top: 10px;
   padding: 0 16px;
 
-<<<<<<< HEAD
-  &>*:not(:last-child) {
-    margin-bottom: 16px;
-  }
-=======
   &>* {
     margin-bottom: 16px;
   }
@@ -29,5 +24,4 @@
   &>*:last-child {
     margin-bottom: 0;
   }
->>>>>>> 6499884 (hw-5)
 }

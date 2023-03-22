@@ -6,10 +6,7 @@ import "@styles/styles.scss";
 import { BrowserRouter } from "react-router-dom";
 
 import App from "./App";
-<<<<<<< HEAD
-=======
 import "regenerator-runtime";
->>>>>>> 6499884 (hw-5)
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

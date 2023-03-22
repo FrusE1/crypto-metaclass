@@ -16,20 +16,12 @@
   }
 
   &__name {
-<<<<<<< HEAD
-    @include text-m();
-=======
     @include text-m;
->>>>>>> 6499884 (hw-5)
     color: $black;
 
     &>span {
       text-transform: uppercase;
-<<<<<<< HEAD
-      @include text-xs();
-=======
       @include text-xs;
->>>>>>> 6499884 (hw-5)
       color: $gray;
       margin-left: 4px;
     }

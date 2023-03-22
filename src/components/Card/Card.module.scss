@@ -28,24 +28,13 @@
 
     &__title {
       color: $black;
-<<<<<<< HEAD
-      @include text-m();
-=======
       @include text-m;
-<<<<<<< HEAD
->>>>>>> 6499884 (hw-5)
-=======
       padding-bottom: 3px;
->>>>>>> 4eb6af3 (Добавлен график цены криптовалюты, а также исправлены некоторые моменты)
     }
 
     &__subtitle {
       text-transform: uppercase;
-<<<<<<< HEAD
-      @include text-s();
-=======
       @include text-s;
->>>>>>> 6499884 (hw-5)
       color: $gray;
     }
   }

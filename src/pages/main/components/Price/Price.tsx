@@ -20,11 +20,7 @@ const Price: React.FC<PriceProps> = ({ price, percentage }: PriceProps) => {
       <div
         className={classNames(
           styles.price_bottom,
-<<<<<<< HEAD
-          Number(percentage) > 0 ? styles.price_green : styles.price_red
-=======
           Number(percentage) > 0 ? styles.green : styles.red
->>>>>>> 6499884 (hw-5)
         )}
       >
         {Number(percentage) > 0 && "+"}

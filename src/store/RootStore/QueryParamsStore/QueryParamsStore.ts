@@ -15,6 +15,7 @@ export type ParsedQsType = qs.ParsedQs;
 export default class QueryParamsStore {
   private _params: qs.ParsedQs = {};
   private _search: string = "";
+  private _path: string = "";
 
   constructor() {
     makeObservable<QueryParamsStore, PrivateFields>(this, {
@@ -23,6 +24,7 @@ export default class QueryParamsStore {
       setSearch: action,
       setPath: action,
       params: computed,
+      path: computed,
     });
   }
 
@@ -39,12 +41,32 @@ export default class QueryParamsStore {
     return this._params;
   }
 
-  setSearch(search: string) {
+  /** Путь в url */
+  get path(): string {
+    return this._path;
+  }
+
+  /** Установить query параметры */
+  setSearch(
+    /** Строка query параметров */
+    search: string
+  ) {
     search = search.startsWith("?") ? search.slice(1) : search;
 
     if (this._search !== search) {
       this._search = search;
       this._params = qs.parse(search);
+    }
+  }
+
+  /** Установить путь */
+  setPath(
+    /** Путь в url */
+    path: string
+  ) {
+    path = path.startsWith("/") ? path.slice(1) : path;
+    if (this._path !== path) {
+      this._path = path;
     }
   }
 }

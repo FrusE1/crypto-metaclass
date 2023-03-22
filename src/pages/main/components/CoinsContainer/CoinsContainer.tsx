@@ -4,11 +4,12 @@ import Pagination from "@components/Pagination";
 import WithLoader from "@components/WithLoader";
 import { useLocalStore } from "@hooks/useLocaleStore";
 import CoinsStore from "@store/CoinsStore";
-import rootStore from "@store/RootStore/instance";
+import { COINS_LIMIT } from "@store/CoinsStore/CoinsStore";
+import rootStore from "@store/RootStore";
 import convertNumberToArray from "@utils/convertNumberToArray";
 import { Meta } from "@utils/meta";
 import { observer } from "mobx-react-lite";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import styles from "./CoinsContainer.module.scss";
 import ListCoins from "../ListCoins";
@@ -25,20 +26,13 @@ const CoinsContainer: React.FC<CoinsContainerProps> = ({
 }: CoinsContainerProps) => {
   const coinsStore = useLocalStore(() => new CoinsStore());
 
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const setPage = (number: number) => {
-    setSearchParams({ ...rootStore.query.params, page: String(number) });
-  };
+  React.useEffect(() => {
+    coinsStore.getCoins();
+  }, [coinsStore, rootStore.query.params]);
 
   React.useEffect(() => {
-    if (!rootStore.query.params.page) {
-      setSearchParams({ page: "1", ...rootStore.query.params });
-    } else {
-      coinsStore.getCoins({
-        ...rootStore.query.params,
-        page: rootStore.query.params.page,
-      });
+    if (!rootStore.query.getParam("page")) {
+      setPage(1);
     }
   }, [setPage]);
 

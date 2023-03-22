@@ -27,17 +27,9 @@ export default class CoinsCategoryStore implements ILocalStore {
     makeObservable<CoinsCategoryStore, PrivateCoinsField>(this, {
       _coinsCategory: observable.ref,
       _loading: observable,
-<<<<<<< HEAD
-<<<<<<< HEAD
-      getCoinsCategory: action,
-=======
-      getCoinsCategory: action.bound,
->>>>>>> 6499884 (hw-5)
-=======
       _currentCategory: observable,
       getCoinsCategory: action.bound,
       setCategory: action.bound,
->>>>>>> cecd3c0 (Добавлена фильтрация по категориям)
       coinsCategory: computed,
       loading: computed,
     });

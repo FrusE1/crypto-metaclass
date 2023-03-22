@@ -6,15 +6,10 @@ import { useSearchParams } from "react-router-dom";
 
 import CategoryDropdown from "./components/CategoryDropdown";
 import CoinsContainer from "./components/CoinsContainer";
-import Filter from "./components/Filter";
 import Search from "./components/Search";
 import styles from "./Main.module.scss";
 
-const filterCategory: Array<string> = ["All", "Gainer", "Loser", "Favourites"];
-
 const Main = () => {
-  const [currentFilter, setCurrentFilter] = React.useState<string>("Gainer");
-
   const [queryParams, setQueryParams] = useSearchParams();
 
   const setPage = React.useCallback(
@@ -41,21 +36,10 @@ const Main = () => {
     [rootStore.query.params, setQueryParams]
   );
 
-  const setFilter = React.useCallback(
-    (value: string) => setCurrentFilter(value),
-    []
-  );
-
   return (
     <div className={styles.main}>
       <Search setSearch={setSearch} />
       <CategoryDropdown setCategory={setCategory} />
-      <Filter
-        values={filterCategory}
-        currentValue={currentFilter}
-        name="coins"
-        onChange={setFilter}
-      />
       <CoinsContainer setPage={setPage} />
     </div>
   );
