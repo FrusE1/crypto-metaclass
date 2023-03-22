@@ -4,11 +4,14 @@ import searchSvg from "@assets/search.svg";
 import Button from "@components/Button";
 import Input from "@components/Input";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import rootStore from "@store/RootStore/instance";
 =======
 import rootStore from "@store/RootStore";
 >>>>>>> 6499884 (hw-5)
 import { useSearchParams } from "react-router-dom";
+=======
+>>>>>>> 4eb6af3 (Добавлен график цены криптовалюты, а также исправлены некоторые моменты)
 
 import styles from "./Search.module.scss";
 
@@ -43,7 +46,9 @@ const Search: React.FC<SearchProps> = ({ setSearch }: SearchProps) => {
         onChange={setValue}
         placeholder="Search Cryptocurrency"
       />
-      <Button onClick={React.useCallback(() => setSearch(value), [value])}>
+      <Button
+        onClick={React.useCallback(() => setSearch(value), [setSearch, value])}
+      >
         <img className={styles.search__img} src={searchSvg} alt="search" />
       </Button>
     </div>

@@ -1,0 +1,6 @@
+@import "@styles/variables";
+
+.customTooltip {
+  @include text-s;
+  color: $gray;
+}

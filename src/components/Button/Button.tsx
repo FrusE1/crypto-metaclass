@@ -7,6 +7,7 @@ import classNames from "classnames";
 import styles from "./Button.module.scss";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export type ButtonProps = React.PropsWithChildren<{
   /**
    * Если true, то внутри кнопки вместе с children отображается компонент Loader
@@ -14,6 +15,9 @@ export type ButtonProps = React.PropsWithChildren<{
    */
 =======
 /** Пропсы, которые принимает компонент WithLoaderProps */
+=======
+/** Пропсы, которые принимает компонент Button */
+>>>>>>> 4eb6af3 (Добавлен график цены криптовалюты, а также исправлены некоторые моменты)
 export type ButtonProps = React.PropsWithChildren<{
   /** Статус загрузки кнопки */
 >>>>>>> 6499884 (hw-5)

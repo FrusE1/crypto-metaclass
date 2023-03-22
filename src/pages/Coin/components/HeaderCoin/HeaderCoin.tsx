@@ -23,10 +23,14 @@ const HeaderCoin: React.FC<HeaderCoinProps> = ({ coin }: HeaderCoinProps) => {
       <img
         className={styles.headerCoin__vector}
 <<<<<<< HEAD
+<<<<<<< HEAD
         onClick={() => goToPageMain()}
 =======
         onClick={React.useCallback(() => goToPageMain(), [])}
 >>>>>>> 6499884 (hw-5)
+=======
+        onClick={() => goToPageMain()}
+>>>>>>> 4eb6af3 (Добавлен график цены криптовалюты, а также исправлены некоторые моменты)
         src={arrow}
         alt="coin arrow"
       />

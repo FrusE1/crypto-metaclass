@@ -2,7 +2,6 @@
 
 .pagination {
   display: flex;
-  align-items: center;
   justify-content: center;
 <<<<<<< HEAD
   height: 90px;
@@ -11,11 +10,14 @@
   @include text-l;
 >>>>>>> 6499884 (hw-5)
 
-  &__item {
-    font-weight: 600;
+  &>* {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  &__item {
+    font-weight: 600;
     @include square(36px);
     cursor: pointer;
     border-radius: 50%;

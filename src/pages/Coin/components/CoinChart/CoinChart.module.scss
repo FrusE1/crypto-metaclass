@@ -1,0 +1,15 @@
+@import "@styles/variables";
+
+.coinChart {
+
+  &__title {
+    padding: 0 16px;
+    @include text-m;
+    color: $gray;
+  }
+
+  &__radio_buttons {
+    padding: 0 16px;
+  }
+
+}

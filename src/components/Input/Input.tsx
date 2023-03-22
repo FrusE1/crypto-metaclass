@@ -4,6 +4,7 @@ import classNames from "classnames";
 
 import styles from "./Input.module.scss";
 
+/** Пропсы, которые принимает компонент Input */
 export type InputProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   "onChange" | "value"
@@ -34,4 +35,4 @@ const Input: React.FC<InputProps> = ({
   );
 };
 
-export default Input;
+export default React.memo(Input);

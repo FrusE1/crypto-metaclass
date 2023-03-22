@@ -7,6 +7,7 @@ import * as Router from "react-router-dom";
 
 import rootStore from "../instance";
 
+/** Хук следящий за изменением query параметров */
 export const useQueryParamsStoreInit = (): void => {
 <<<<<<< HEAD
   const { search } = Router.useLocation();

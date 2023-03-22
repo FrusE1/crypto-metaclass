@@ -1,5 +1,14 @@
 @import "@styles/variables";
 
+.coinContainer {
+  overflow: auto;
+
+  &>*:last-child {
+    margin-top: 16px;
+    margin-bottom: 20px;
+  }
+}
+
 .coin {
   margin-top: 10px;
   padding: 0 16px;
@@ -13,7 +22,11 @@
     margin-bottom: 16px;
   }
 
-  &:last-child {
+  &>*:first-child {
+    margin-top: 18px;
+  }
+
+  &>*:last-child {
     margin-bottom: 0;
   }
 >>>>>>> 6499884 (hw-5)

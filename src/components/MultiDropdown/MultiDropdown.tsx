@@ -13,7 +13,7 @@ export type Option = {
 
 export type valueMultiDropdownType = string | null;
 
-/** Пропсы, которые принимает компонент Dropdown */
+/** Пропсы, которые принимает компонент MultiDropdown */
 export type MultiDropdownProps = {
   /** Массив возможных вариантов для выбора */
   options: Option[];
@@ -41,10 +41,11 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
     return value === key;
   };
 
-  const changeValue = (value: valueMultiDropdownType, key: string): string | null => {
-    return isChecked(value, key)
-      ? null
-      : key
+  const changeValue = (
+    value: valueMultiDropdownType,
+    key: string
+  ): string | null => {
+    return isChecked(value, key) ? null : key;
   };
 
   return (

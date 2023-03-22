@@ -1,0 +1,37 @@
+@import "@styles/variables";
+
+.radioButtons {
+  display: flex;
+  justify-content: space-between;
+  @include text-s;
+  color: #6C757D;
+
+  &>* {
+    margin-right: 5px;
+  }
+
+  &:last-child {
+    margin-right: 0px;
+  }
+
+  &__span {
+    display: inline-block;
+    padding: 5px 9px;
+    border: 1px solid $light-gray;
+    border-radius: 20px;
+    color: $gray;
+    background-color: $white-gray;
+    white-space: nowrap;
+  }
+
+  &__radio {
+    appearance: none;
+
+    &:checked+.radioButtons__span {
+      color: $blue;
+      border-color: $blue;
+      background-color: rgb(0, 99, 245, 0.1);
+    }
+  }
+
+}

@@ -1,13 +1,14 @@
-import rootStore from "@store/RootStore";
 import React from "react";
+
+import { valueMultiDropdownType } from "@components/MultiDropdown/MultiDropdown";
+import rootStore from "@store/RootStore";
 import { useSearchParams } from "react-router-dom";
 
+import CategoryDropdown from "./components/CategoryDropdown";
 import CoinsContainer from "./components/CoinsContainer";
 import Filter from "./components/Filter";
 import Search from "./components/Search";
-import CategoryDropdown from "./components/CategoryDropdown";
 import styles from "./Main.module.scss";
-import { valueMultiDropdownType } from "@components/MultiDropdown/MultiDropdown";
 
 const filterCategory: Array<string> = ["All", "Gainer", "Loser", "Favourites"];
 
@@ -16,23 +17,34 @@ const Main = () => {
 
   const [queryParams, setQueryParams] = useSearchParams();
 
-  const setPage = React.useCallback((number: number) => {
-    setQueryParams({ ...rootStore.query.params, page: String(number) });
-  }, [rootStore.query.params]);
+  const setPage = React.useCallback(
+    (number: number) => {
+      setQueryParams({ ...rootStore.query.params, page: String(number) });
+    },
+    [rootStore.query.params, setQueryParams]
+  );
 
-  const setSearch = React.useCallback((search: string) =>
-    setQueryParams({ ...rootStore.query.params, search, page: "1" })
-    , [rootStore.query.params]);
+  const setSearch = React.useCallback(
+    (search: string) =>
+      setQueryParams({ ...rootStore.query.params, search, page: "1" }),
+    [rootStore.query.params, setQueryParams]
+  );
 
-  const setCategory = React.useCallback((category: valueMultiDropdownType) => {
-    setQueryParams({
-      ...rootStore.query.params,
-      category: category ? category : "",
-      page: "1"
-    })
-  }, [rootStore.query.params]);
+  const setCategory = React.useCallback(
+    (category: valueMultiDropdownType) => {
+      setQueryParams({
+        ...rootStore.query.params,
+        category: category ? category : "",
+        page: "1",
+      });
+    },
+    [rootStore.query.params, setQueryParams]
+  );
 
-  const setFilter = React.useCallback((value: string) => setCurrentFilter(value), []);
+  const setFilter = React.useCallback(
+    (value: string) => setCurrentFilter(value),
+    []
+  );
 
   return (
     <div className={styles.main}>
@@ -49,4 +61,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default React.memo(Main);
