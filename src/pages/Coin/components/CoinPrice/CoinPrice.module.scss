@@ -2,7 +2,7 @@
 
 .coinPrice {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
 
   &__main {
     @include text-xl();
@@ -14,6 +14,7 @@
   &__percentage {
     @include text-m;
     font-weight: 450;
+    padding-bottom: 2px;
 
     &.green {
       color: $green;

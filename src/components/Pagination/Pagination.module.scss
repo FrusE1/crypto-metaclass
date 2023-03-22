@@ -2,15 +2,17 @@
 
 .pagination {
   display: flex;
-  align-items: center;
   justify-content: center;
   @include text-l;
 
-  &__item {
-    font-weight: 600;
+  &>* {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  &__item {
+    font-weight: 600;
     @include square(36px);
     cursor: pointer;
     border-radius: 50%;

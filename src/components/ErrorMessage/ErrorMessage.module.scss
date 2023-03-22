@@ -1,0 +1,22 @@
+@import "@styles/variables";
+
+.errorMessage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include text-l;
+  margin: 20px 0;
+
+  &_link {
+    margin-left: 5px;
+    cursor: pointer;
+
+    &:hover {
+      color: $gray;
+    }
+  }
+
+  &>a {
+    color: $blue;
+  }
+}

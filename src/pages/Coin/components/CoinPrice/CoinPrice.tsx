@@ -24,7 +24,7 @@ const CoinPrice: React.FC<CoinPriceProps> = ({ coin }: CoinPriceProps) => {
           Number(coin.marketData.priceChange) > 0 ? styles.green : styles.red
         )}
       >
-        {+formatNumber(Number(coin.marketData.priceChange)) > 0 && "+"}
+        {Number(coin.marketData.priceChange) > 0 && "+"}
         {formatNumber(Number(coin.marketData.priceChange), {
           maximumFractionDigits: 3,
         })}{" "}

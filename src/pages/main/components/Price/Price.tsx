@@ -5,6 +5,7 @@ import classNames from "classnames";
 
 import styles from "./Price.module.scss";
 
+/** Пропсы, которые принимает компонент Price */
 export type PriceProps = {
   /** Текущая цена */
   price: string;
@@ -29,4 +30,4 @@ const Price: React.FC<PriceProps> = ({ price, percentage }: PriceProps) => {
   );
 };
 
-export default React.memo(Price);
+export default Price;

@@ -8,7 +8,7 @@ export type FilterProps = {
   values: Array<string>;
   /** Текущее выбранное значение */
   currentValue: string;
-  /** Имя для граппирования значений фильтрации */
+  /** Имя для группирования значений фильтрации */
   name: string;
   /** Callback, вызываемый при выборе варианта */
   onChange: (value: string) => void;

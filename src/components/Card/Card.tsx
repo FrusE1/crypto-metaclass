@@ -2,6 +2,7 @@ import React from "react";
 
 import styles from "./Card.module.scss";
 
+/** Пропсы, которые принимает компонент Card */
 export type CardProps = {
   /** URL изображения */
   image: string;
@@ -36,4 +37,4 @@ const Card: React.FC<CardProps> = ({
   );
 };
 
-export default Card;
+export default React.memo(Card);

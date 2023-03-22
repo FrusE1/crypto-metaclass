@@ -7,7 +7,7 @@ export interface ILocalStore {
   destroy(): void;
 }
 
-// создает экземпляры классов, время жизни которых ограничено жизненным циклом компонента.
+/** Cоздает экземпляр класса, время жизни которого ограничено жизненным циклом компонента. */
 export const useLocalStore = <T extends ILocalStore>(creator: () => T): T => {
   const container = React.useRef<null | T>(null);
   if (container.current === null) {

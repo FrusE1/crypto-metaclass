@@ -29,6 +29,7 @@
     &__title {
       color: $black;
       @include text-m;
+      padding-bottom: 3px;
     }
 
     &__subtitle {

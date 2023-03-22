@@ -1,7 +1,7 @@
 import { action, computed, makeObservable, observable } from "mobx";
 import * as qs from "qs";
 
-type PrivateFields = "_params";
+type PrivateFields = "_params" | "_path";
 
 export type QsType =
   | undefined
@@ -19,26 +19,38 @@ export default class QueryParamsStore {
 
   constructor() {
     makeObservable<QueryParamsStore, PrivateFields>(this, {
-      _params: observable.ref,
+      _params: observable,
+      _path: observable,
       setSearch: action,
+      setPath: action,
       params: computed,
       path: computed,
     });
   }
 
-  getParam(key: string): QsType {
+  /** Получить данные о конкретном query параметре */
+  getParam(
+    /** Ключ параметра */
+    key: string
+  ): QsType {
     return this._params[key];
   }
 
+  /** Все query параметры */
   get params(): qs.ParsedQs {
     return this._params;
   }
 
+  /** Путь в url */
   get path(): string {
     return this._path;
   }
 
-  setSearch(search: string) {
+  /** Установить query параметры */
+  setSearch(
+    /** Строка query параметров */
+    search: string
+  ) {
     search = search.startsWith("?") ? search.slice(1) : search;
 
     if (this._search !== search) {
@@ -47,9 +59,12 @@ export default class QueryParamsStore {
     }
   }
 
-  setPath(path: string) {
+  /** Установить путь */
+  setPath(
+    /** Путь в url */
+    path: string
+  ) {
     path = path.startsWith("/") ? path.slice(1) : path;
-
     if (this._path !== path) {
       this._path = path;
     }

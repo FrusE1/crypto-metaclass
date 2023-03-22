@@ -6,7 +6,7 @@ import classNames from "classnames";
 
 import styles from "./Button.module.scss";
 
-/** Пропсы, которые принимает компонент WithLoaderProps */
+/** Пропсы, которые принимает компонент Button */
 export type ButtonProps = React.PropsWithChildren<{
   /** Статус загрузки кнопки */
   loading?: boolean;

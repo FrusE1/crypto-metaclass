@@ -1,7 +1,13 @@
 @import "@styles/variables";
 
 .main {
+  display: flex;
+  flex-direction: column;
   padding: 0 16px;
   background-color: $white-gray;
-  overflow: hidden;
+  overflow: auto;
+
+  &>*:last-child {
+    flex-grow: 1;
+  }
 }

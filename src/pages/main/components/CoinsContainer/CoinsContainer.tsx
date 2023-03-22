@@ -4,15 +4,16 @@ import Pagination from "@components/Pagination";
 import WithLoader from "@components/WithLoader";
 import { useLocalStore } from "@hooks/useLocaleStore";
 import CoinsStore from "@store/CoinsStore";
+import { COINS_LIMIT } from "@store/CoinsStore/CoinsStore";
 import rootStore from "@store/RootStore";
 import convertNumberToArray from "@utils/convertNumberToArray";
 import { Meta } from "@utils/meta";
 import { observer } from "mobx-react-lite";
-import { Link, useSearchParams } from "react-router-dom";
-import styles from "./CoinsContainer.module.scss";
+import { Link } from "react-router-dom";
 
+import styles from "./CoinsContainer.module.scss";
 import ListCoins from "../ListCoins";
-import { COINS_LIMIT } from "@store/CoinsStore/CoinsStore";
+import ErrorMessage from "@components/ErrorMessage";
 
 /** Пропсы, которые принимает компонент CoinsContainer */
 export type CoinsContainerProps = {
@@ -20,7 +21,9 @@ export type CoinsContainerProps = {
   setPage: (page: number) => void;
 };
 
-const CoinsContainer: React.FC<CoinsContainerProps> = ({ setPage }: CoinsContainerProps) => {
+const CoinsContainer: React.FC<CoinsContainerProps> = ({
+  setPage,
+}: CoinsContainerProps) => {
   const coinsStore = useLocalStore(() => new CoinsStore());
 
   React.useEffect(() => {
@@ -28,28 +31,27 @@ const CoinsContainer: React.FC<CoinsContainerProps> = ({ setPage }: CoinsContain
   }, [coinsStore, rootStore.query.params]);
 
   React.useEffect(() => {
-    if (!rootStore.query.params.page) {
+    if (!rootStore.query.getParam("page")) {
       setPage(1);
     }
-  }, [])
+  }, [setPage]);
+
+
 
   return (
     <WithLoader loading={coinsStore.loading === Meta.loading}>
-      {coinsStore.items.length
-        ? <>
+      {coinsStore.loading !== Meta.error ? (
+        <>
           <ListCoins items={coinsStore.items} />
           <Pagination
             currentPage={Number(rootStore.query.params.page)}
-            pages={convertNumberToArray(
-              coinsStore.totalCount / COINS_LIMIT
-            )}
+            pages={convertNumberToArray(coinsStore.totalCount / COINS_LIMIT)}
             loadingPage={setPage}
           />
         </>
-        : <div className={styles.error}>
-          Data not found. <Link to="/" className={styles.error_link}>Go to main page</Link>
-        </div>
-      }
+      ) : (
+        <ErrorMessage />
+      )}
     </WithLoader>
   );
 };

@@ -1,10 +1,9 @@
 import { ILocalStore } from "@hooks/useLocaleStore";
-import ApiStore from "@store/ApiStore";
 import {
   normalizeCoins,
   CoinsApi,
   CoinsModel,
-  CoinsSearchApi
+  CoinsSearchApi,
 } from "@store/models/coins";
 import {
   CollectionModel,
@@ -16,17 +15,14 @@ import rootStore from "@store/RootStore";
 import { ParsedQsType } from "@store/RootStore/QueryParamsStore";
 import { Meta } from "@utils/meta";
 import axios from "axios";
-import { makeObservable, observable, action, computed } from "mobx";
+import { makeObservable, observable, action, computed, runInAction } from "mobx";
 
 type PrivateCoinsField = "_items" | "_loading";
 
-const BASE_URL = "https://api.coingecko.com";
 /** Лимит получаемых значений о криптовалюте */
 export const COINS_LIMIT = 10;
 
 export default class CoinsStore implements ILocalStore {
-
-  // private readonly _apiStore = new ApiStore(BASE_URL);
   private _items: CollectionModel<string, CoinsModel, number> =
     getInitialCollectionModel();
   private _loading: Meta = Meta.initial;
@@ -42,43 +38,43 @@ export default class CoinsStore implements ILocalStore {
     });
   }
 
+  /** Вся полученная криптовалюта */
   get items(): CoinsModel[] {
     return linearizeCollection(this._items);
   }
 
+  /** Количество полученной криптовалюты */
   get totalCount(): number {
     return this._items.totalCount;
   }
 
+  /** Статус загрузки криптовалюты */
   get loading(): Meta {
     return this._loading;
   }
 
+  /** Получить список криптовалюты */
   async getCoins(): Promise<void> {
-
     this._loading = Meta.loading;
     this._items = getInitialCollectionModel();
 
     try {
-      const search = rootStore.query.getParam("search")
-        ? `?query=${rootStore.query.getParam("search")}`
-        : null;
 
-      const categoryQuery = rootStore.query.getParam("category")
+      const search: string = rootStore.query.getParam("search")
+        ? `?query=${rootStore.query.getParam("search")}`
+        : "";
+
+      const categoryQuery: string = rootStore.query.getParam("category")
         ? `&category=${rootStore.query.getParam("category")}`
         : "";
 
       let idCoinSearch: string[] = [];
       if (search) {
         const responseSearch = await axios.get<CoinsSearchApi>(
-          `https://api.coingecko.com/api/v3/search${search}`
+          `/api/v3/search${search}`
         );
         idCoinSearch = responseSearch.data.coins.map((item) => item.id);
       }
-
-      const response = await axios.get<CoinsApi[]>(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd${categoryQuery}`
-      );
 
       const queryParams: ParsedQsType = {};
 
@@ -88,32 +84,38 @@ export default class CoinsStore implements ILocalStore {
         }
       }
 
-      try {
-        const responseCoins = await axios.get<CoinsApi[]>(
-          "https://api.coingecko.com/api/v3/coins/markets",
-          {
-            params: {
-              vs_currency: "usd",
-              per_page: COINS_LIMIT,
-              ...queryParams
-            },
-          }
-        );
 
+      const response = await axios.get<CoinsApi[]>(
+        `/api/v3/coins/markets?vs_currency=usd&per_page=250&ids=${idCoinSearch.join(',')}${categoryQuery}`
+      )
+
+      const responseCoins = await axios.get<CoinsApi[]>(
+        "/api/v3/coins/markets",
+        {
+          params: {
+            vs_currency: "usd",
+            per_page: COINS_LIMIT,
+            ids: idCoinSearch.join(","),
+            ...queryParams
+          },
+        }
+      );
+
+      runInAction(() => {
         this._loading = Meta.success;
         this._items = normalizeCollection(
           responseCoins.data,
           (item) => item.id,
           normalizeCoins,
-          idCoinSearch.length ? idCoinSearch.length : response.data.length
+          response.data.length
         );
-      } catch {
+      })
+
+    } catch {
+      runInAction(() => {
         this._loading = Meta.error;
         this._items = getInitialCollectionModel();
-      }
-    } catch {
-      this._loading = Meta.error;
-      this._items = getInitialCollectionModel();
+      })
     }
   }
 
