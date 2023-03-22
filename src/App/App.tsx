@@ -12,7 +12,11 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Main />} />
+<<<<<<< HEAD
         <Route path="/coins/:id" element={<Coin />} />
+=======
+        <Route path="/:id" element={<Coin />} />
+>>>>>>> 6499884 (hw-5)
       </Routes>
     </div>
   );

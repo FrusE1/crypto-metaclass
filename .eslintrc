@@ -7,7 +7,11 @@
     "prettier"
   ],
   "rules": {
+<<<<<<< HEAD
     "no-console": "error",
+=======
+    // "no-console": "error",
+>>>>>>> 6499884 (hw-5)
     "prettier/prettier": "error",
     "import/order": [
       "error",

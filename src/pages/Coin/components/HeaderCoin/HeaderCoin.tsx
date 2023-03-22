@@ -22,7 +22,11 @@ const HeaderCoin: React.FC<HeaderCoinProps> = ({ coin }: HeaderCoinProps) => {
     <div className={styles.headerCoin}>
       <img
         className={styles.headerCoin__vector}
+<<<<<<< HEAD
         onClick={() => goToPageMain()}
+=======
+        onClick={React.useCallback(() => goToPageMain(), [])}
+>>>>>>> 6499884 (hw-5)
         src={arrow}
         alt="coin arrow"
       />

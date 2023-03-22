@@ -2,18 +2,31 @@
 
 .coinDescription {
 
+<<<<<<< HEAD
   &>h2 {
     @include text-m();
+=======
+  &__title {
+    @include text-m;
+>>>>>>> 6499884 (hw-5)
     color: $gray;
     margin-bottom: 8px;
   }
 
+<<<<<<< HEAD
   &>p {
+=======
+  &__subtitle {
+>>>>>>> 6499884 (hw-5)
     color: $black;
     word-break: break-all;
   }
 
+<<<<<<< HEAD
   & a {
+=======
+  &>a {
+>>>>>>> 6499884 (hw-5)
     color: $blue;
     text-decoration: underline;
   }

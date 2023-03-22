@@ -11,27 +11,47 @@ $blue: #0063F5;
 // font size mixins
 @mixin text-xs() {
   font-size: 10px;
+<<<<<<< HEAD
   line-height: 12.65px;
+=======
+  line-height: 13px;
+>>>>>>> 6499884 (hw-5)
 }
 
 @mixin text-s() {
   font-size: 12px;
+<<<<<<< HEAD
   line-height: 15.18px;
+=======
+  line-height: 15px;
+>>>>>>> 6499884 (hw-5)
 }
 
 @mixin text-m() {
   font-size: 16px;
+<<<<<<< HEAD
   line-height: 20.24px;
+=======
+  line-height: 20px;
+>>>>>>> 6499884 (hw-5)
 }
 
 @mixin text-l() {
   font-size: 18px;
+<<<<<<< HEAD
   line-height: 22.77px;
+=======
+  line-height: 23px;
+>>>>>>> 6499884 (hw-5)
 }
 
 @mixin text-xl() {
   font-size: 24px;
+<<<<<<< HEAD
   line-height: 30.36px;
+=======
+  line-height: 30px;
+>>>>>>> 6499884 (hw-5)
 }
 
 // other

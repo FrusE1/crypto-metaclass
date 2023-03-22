@@ -21,9 +21,13 @@ const CoinPrice: React.FC<CoinPriceProps> = ({ coin }: CoinPriceProps) => {
       <div
         className={classNames(
           styles.coinPrice__percentage,
+<<<<<<< HEAD
           Number(coin.marketData.priceChange) > 0
             ? styles.price_green
             : styles.price_red
+=======
+          Number(coin.marketData.priceChange) > 0 ? styles.green : styles.red
+>>>>>>> 6499884 (hw-5)
         )}
       >
         {+formatNumber(Number(coin.marketData.priceChange)) > 0 && "+"}

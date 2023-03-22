@@ -28,12 +28,20 @@
 
     &__title {
       color: $black;
+<<<<<<< HEAD
       @include text-m();
+=======
+      @include text-m;
+>>>>>>> 6499884 (hw-5)
     }
 
     &__subtitle {
       text-transform: uppercase;
+<<<<<<< HEAD
       @include text-s();
+=======
+      @include text-s;
+>>>>>>> 6499884 (hw-5)
       color: $gray;
     }
   }

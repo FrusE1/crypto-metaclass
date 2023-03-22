@@ -17,13 +17,18 @@ const ListCoins: React.FC<ListCoinsProps> = ({ items }: ListCoinsProps) => {
   const navigate = useNavigate();
 
   const goToPage = (id: string): void => {
+<<<<<<< HEAD
     navigate(`/coins/${id}`);
+=======
+    navigate(`/${id}`);
+>>>>>>> 6499884 (hw-5)
   };
 
   return (
     <div className={styles.listCoins}>
       {items.map((item) => {
         return (
+<<<<<<< HEAD
           <React.Fragment key={item.id}>
             <Card
               image={item.image}
@@ -38,6 +43,21 @@ const ListCoins: React.FC<ListCoinsProps> = ({ items }: ListCoinsProps) => {
               onClick={() => goToPage(item.id)}
             />
           </React.Fragment>
+=======
+          <Card
+            key={item.id}
+            image={item.image}
+            title={item.name}
+            subtitle={item.symbol}
+            content={
+              <Price
+                price={item.currentPrice}
+                percentage={item.priceChangePercentage}
+              />
+            }
+            onClick={() => goToPage(item.id)}
+          />
+>>>>>>> 6499884 (hw-5)
         );
       })}
     </div>
