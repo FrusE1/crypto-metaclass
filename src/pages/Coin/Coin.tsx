@@ -13,7 +13,12 @@ import CoinDescription from "./components/CoinDescription";
 import CoinList from "./components/CoinList";
 import CoinPrice from "./components/CoinPrice";
 import HeaderCoin from "./components/HeaderCoin/HeaderCoin";
+import WithLoader from "@components/WithLoader";
+import { Meta } from "@utils/meta";
+import { useNavigate } from "react-router-dom";
+import rootStore from "@store/RootStore";
 
+<<<<<<< HEAD
 const CoinInfo = () => {
 <<<<<<< HEAD
   const { id } = useParams();
@@ -25,21 +30,40 @@ const CoinInfo = () => {
     }
   }, [id, coinStore]);
 =======
+=======
+const Coin = () => {
+>>>>>>> cecd3c0 (Добавлена фильтрация по категориям)
   const coinStore = useLocalStore(() => new CoinStore());
+  const navigate = useNavigate();
+
+  console.log("Render Coin", coinStore.coin, coinStore.loading);
+  console.log("Query", rootStore.query)
 
   React.useEffect(() => {
     coinStore.getCoin();
+<<<<<<< HEAD
   }, [coinStore]);
 >>>>>>> 6499884 (hw-5)
+=======
+  }, []);
+
+  React.useEffect(() => {
+    if (coinStore.loading === Meta.error) {
+      navigate("/error")
+    }
+  }, [])
+>>>>>>> cecd3c0 (Добавлена фильтрация по категориям)
 
   return (
     <div className={styles.coin}>
       <HeaderCoin coin={coinStore.coin} />
-      <CoinPrice coin={coinStore.coin} />
-      <CoinList coin={coinStore.coin} />
-      <CoinDescription description={coinStore.coin.description.en} />
+      <WithLoader loading={coinStore.loading === Meta.loading}>
+        <CoinPrice coin={coinStore.coin} />
+        <CoinList coin={coinStore.coin} />
+        <CoinDescription description={coinStore.coin.description.en} />
+      </WithLoader>
     </div>
   );
 };
 
-export default observer(CoinInfo);
+export default observer(Coin);

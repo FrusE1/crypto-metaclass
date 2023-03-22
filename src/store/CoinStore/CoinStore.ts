@@ -1,4 +1,5 @@
 import { ILocalStore } from "@hooks/useLocaleStore";
+import ApiStore from "@store/ApiStore";
 import {
   getInitialCoinModel,
   normalizeCoin,
@@ -15,9 +16,12 @@ import { makeObservable, observable, action, computed } from "mobx";
 
 type PrivateCoinsField = "_coin" | "_loading";
 
+const BASE_URL = "https://api.coingecko.com";
+
 export default class CoinStore implements ILocalStore {
   private _coin: CoinModel = getInitialCoinModel();
   private _loading: Meta = Meta.initial;
+  // private readonly _apiStore = new ApiStore(BASE_URL);
 
   constructor() {
     makeObservable<CoinStore, PrivateCoinsField>(this, {
@@ -45,7 +49,11 @@ export default class CoinStore implements ILocalStore {
   async getCoin(id: string): Promise<void> {
 =======
   async getCoin(): Promise<void> {
+<<<<<<< HEAD
 >>>>>>> 6499884 (hw-5)
+=======
+    console.log("Coin axios");
+>>>>>>> cecd3c0 (Добавлена фильтрация по категориям)
     this._loading = Meta.loading;
     this._coin = getInitialCoinModel();
 
@@ -66,5 +74,5 @@ export default class CoinStore implements ILocalStore {
     }
   }
 
-  destroy(): void {}
+  destroy(): void { }
 }

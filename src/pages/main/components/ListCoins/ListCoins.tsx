@@ -9,7 +9,7 @@ import Price from "../Price";
 
 /** Пропсы, которые принимает компонент ListCoins */
 export type ListCoinsProps = {
-  /** Криптомонеты */
+  /** Список криптомонет */
   items: CoinsModel[];
 };
 

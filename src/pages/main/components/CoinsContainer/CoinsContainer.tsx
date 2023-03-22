@@ -8,11 +8,19 @@ import rootStore from "@store/RootStore/instance";
 import convertNumberToArray from "@utils/convertNumberToArray";
 import { Meta } from "@utils/meta";
 import { observer } from "mobx-react-lite";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
+import styles from "./CoinsContainer.module.scss";
 
 import ListCoins from "../ListCoins";
+import { COINS_LIMIT } from "@store/CoinsStore/CoinsStore";
 
-const CoinsContainer = () => {
+/** Пропсы, которые принимает компонент CoinsContainer */
+export type CoinsContainerProps = {
+  /** Функция для изменения страницы */
+  setPage: (page: number) => void;
+};
+
+const CoinsContainer: React.FC<CoinsContainerProps> = ({ setPage }: CoinsContainerProps) => {
   const coinsStore = useLocalStore(() => new CoinsStore());
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -30,18 +38,25 @@ const CoinsContainer = () => {
         page: rootStore.query.params.page,
       });
     }
-  }, [coinsStore, rootStore.query.params]);
+  }, [])
 
   return (
     <WithLoader loading={coinsStore.loading === Meta.loading}>
-      <ListCoins items={coinsStore.items} />
-      <Pagination
-        currentPage={Number(rootStore.query.params.page)}
-        pages={convertNumberToArray(
-          coinsStore.totalCount / coinsStore.items.length
-        )}
-        loadingPage={setPage}
-      />
+      {coinsStore.items.length
+        ? <>
+          <ListCoins items={coinsStore.items} />
+          <Pagination
+            currentPage={Number(rootStore.query.params.page)}
+            pages={convertNumberToArray(
+              coinsStore.totalCount / COINS_LIMIT
+            )}
+            loadingPage={setPage}
+          />
+        </>
+        : <div className={styles.error}>
+          Data not found. <Link to="/" className={styles.error_link}>Go to main page</Link>
+        </div>
+      }
     </WithLoader>
   );
 };

@@ -1,9 +1,10 @@
 import { ILocalStore } from "@hooks/useLocaleStore";
+import ApiStore from "@store/ApiStore";
 import {
   normalizeCoins,
   CoinsApi,
   CoinsModel,
-  CoinsSearchApi,
+  CoinsSearchApi
 } from "@store/models/coins";
 import {
   CollectionModel,
@@ -11,6 +12,8 @@ import {
   linearizeCollection,
   normalizeCollection,
 } from "@store/models/shared/collection";
+import rootStore from "@store/RootStore";
+import { ParsedQsType } from "@store/RootStore/QueryParamsStore";
 import { Meta } from "@utils/meta";
 import axios from "axios";
 import { makeObservable, observable, action, computed } from "mobx";
@@ -18,7 +21,13 @@ import * as qs from "qs";
 
 type PrivateCoinsField = "_items" | "_loading";
 
+const BASE_URL = "https://api.coingecko.com";
+/** Лимит получаемых значений о криптовалюте */
+export const COINS_LIMIT = 10;
+
 export default class CoinsStore implements ILocalStore {
+
+  // private readonly _apiStore = new ApiStore(BASE_URL);
   private _items: CollectionModel<string, CoinsModel, number> =
     getInitialCollectionModel();
   private _loading: Meta = Meta.initial;
@@ -67,6 +76,14 @@ export default class CoinsStore implements ILocalStore {
       const responseLength = await axios.get<CoinsApi[]>(
         "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd"
       );
+
+      const queryParams: ParsedQsType = {};
+
+      for (let key in rootStore.query.params) {
+        if (rootStore.query.getParam(key) !== "" || rootStore.query.getParam(key)) {
+          queryParams[key] = rootStore.query.params[key]
+        }
+      }
 
       try {
         const response = await axios.get<CoinsApi[]>(

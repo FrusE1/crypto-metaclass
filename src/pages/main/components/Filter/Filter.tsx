@@ -24,19 +24,17 @@ const Filter: React.FC<FilterProps> = ({
     <div className={styles.filter}>
       {values.map((value) => {
         return (
-          <React.Fragment key={value}>
-            <label className={styles.filter__label}>
-              <input
-                className={styles.filter__radio}
-                type="radio"
-                value={value}
-                name={name}
-                checked={value === currentValue}
-                onChange={(e) => onChange(e.target.value)}
-              />
-              <span className={styles.filter__span}>{value}</span>
-            </label>
-          </React.Fragment>
+          <label className={styles.filter__label} key={value}>
+            <input
+              className={styles.filter__radio}
+              type="radio"
+              value={value}
+              name={name}
+              checked={value === currentValue}
+              onChange={(e) => onChange(e.target.value)}
+            />
+            <span className={styles.filter__span}>{value}</span>
+          </label>
         );
       })}
       <div className={styles.filter__border}></div>
@@ -44,4 +42,4 @@ const Filter: React.FC<FilterProps> = ({
   );
 };
 
-export default Filter;
+export default React.memo(Filter);

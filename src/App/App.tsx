@@ -4,19 +4,25 @@ import Coin from "@pages/Coin";
 import Main from "@pages/main";
 import { useQueryParamsStoreInit } from "@store/RootStore/hooks/useQueryParamsStoreInit";
 import { Routes, Route } from "react-router-dom";
+import Error from "@pages/Error";
+
 
 function App() {
   useQueryParamsStoreInit();
 
   return (
-    <div className="App">
+    <div>
       <Routes>
         <Route path="/" element={<Main />} />
 <<<<<<< HEAD
         <Route path="/coins/:id" element={<Coin />} />
 =======
         <Route path="/:id" element={<Coin />} />
+<<<<<<< HEAD
 >>>>>>> 6499884 (hw-5)
+=======
+        <Route path="/error" element={<Error />} />
+>>>>>>> cecd3c0 (Добавлена фильтрация по категориям)
       </Routes>
     </div>
   );

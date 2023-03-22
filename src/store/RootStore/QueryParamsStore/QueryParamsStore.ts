@@ -3,12 +3,14 @@ import * as qs from "qs";
 
 type PrivateFields = "_params";
 
-export type QSType =
+export type QsType =
   | undefined
   | string
   | string[]
   | qs.ParsedQs
   | qs.ParsedQs[];
+
+export type ParsedQsType = qs.ParsedQs;
 
 export default class QueryParamsStore {
   private _params: qs.ParsedQs = {};
@@ -22,7 +24,7 @@ export default class QueryParamsStore {
     });
   }
 
-  getParam(key: string): QSType {
+  getParam(key: string): QsType {
     return this._params[key];
   }
 

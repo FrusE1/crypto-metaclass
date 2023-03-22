@@ -68,6 +68,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "6",
+    "recharts": "^2.5.0",
     "regenerator-runtime": "^0.13.11"
   },
   "name": "crypto-metaclass",
@@ -123,4 +124,7 @@
     "webpack-dev-server": "^4.11.1"
   }
 }
+<<<<<<< HEAD
 >>>>>>> 6499884 (hw-5)
+=======
+>>>>>>> cecd3c0 (Добавлена фильтрация по категориям)

@@ -93,9 +93,19 @@ module.exports = {
     }
   },
   devServer: {
-    host: "127.0.0.1",
+    host: "localhost",
     port: 9000,
     hot: true,
-    historyApiFallback: true
+    historyApiFallback: true,
+    headers: {
+      'Access-Control-Allow-Origin': 'https://api.coingecko.com',
+    },
+    // proxy: {
+    //   '/api/**': {
+    //     target: 'https://api.coingecko.com',
+    //     secure: false,
+    //     changeOrigin: true,
+    //   },
+    // },
   }
 }

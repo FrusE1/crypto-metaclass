@@ -1,0 +1,21 @@
+@import "@styles/variables";
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include text-xl;
+
+  &_link {
+    margin-left: 5px;
+    cursor: pointer;
+
+    &:hover {
+      color: $gray;
+    }
+  }
+
+  &>a {
+    color: $blue;
+  }
+}

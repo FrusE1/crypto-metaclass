@@ -11,18 +11,18 @@ export type Option = {
   value: string;
 };
 
+export type valueMultiDropdownType = string | null;
+
 /** Пропсы, которые принимает компонент Dropdown */
 export type MultiDropdownProps = {
   /** Массив возможных вариантов для выбора */
   options: Option[];
   /** Текущие выбранные значения поля, может быть пустым */
-  value: Option[];
+  value: valueMultiDropdownType;
   /** Callback, вызываемый при выборе варианта */
-  onChange: (value: Option[]) => void;
+  onChange: (value: valueMultiDropdownType) => void;
   /** Заблокирован ли дропдаун */
   disabled?: boolean;
-  /** Преобразовать выбранные значения в строку. Отображается в дропдауне в качестве выбранного значения */
-  pluralizeOptions: (value: Option[]) => string;
 };
 
 const MultiDropdown: React.FC<MultiDropdownProps> = ({
@@ -30,7 +30,6 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
   value,
   onChange,
   disabled,
-  pluralizeOptions,
 }: MultiDropdownProps) => {
   const [isVisible, setIsVisible] = React.useState<boolean>(false);
 
@@ -38,14 +37,14 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
     setIsVisible((prevIsVisible) => !prevIsVisible);
   };
 
-  const isChecked = (value: Option[], key: string): boolean => {
-    return !!value.find((item) => item.key === key);
+  const isChecked = (value: valueMultiDropdownType, key: string): boolean => {
+    return value === key;
   };
 
-  const changeValue = (value: Option[], item: Option): Option[] => {
-    return isChecked(value, item.key)
-      ? value.filter((i) => i.key !== item.key)
-      : [...value, { key: item.key, value: item.value }];
+  const changeValue = (value: valueMultiDropdownType, key: string): string | null => {
+    return isChecked(value, key)
+      ? null
+      : key
   };
 
   return (
@@ -57,7 +56,7 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
         })}
         disabled={disabled}
       >
-        {pluralizeOptions(value) || "Chose category"}
+        {value || "Chose category"}
       </button>
       {isVisible && !disabled && (
         <div className={styles.multiDropdown__list}>
@@ -71,7 +70,7 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
                   type="checkbox"
                   className={styles.multiDropdown__list_input}
                   value={item.key}
-                  onChange={() => onChange(changeValue(value, item))}
+                  onChange={() => onChange(changeValue(value, item.key))}
                   checked={isChecked(value, item.key)}
                 />
                 <div className={styles.multiDropdown__list_item}>
