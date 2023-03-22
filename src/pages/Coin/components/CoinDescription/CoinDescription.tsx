@@ -25,8 +25,17 @@ const CoinDescription: React.FC<CoinDescriptionProps> = ({
       <p>{description}</p>
 =======
       <h2 className={styles.coinDescription__title}>Description</h2>
+<<<<<<< HEAD
       <p className={styles.coinDescription__subtitle}>{description}</p>
 >>>>>>> 6499884 (hw-5)
+=======
+      <p
+        className={styles.coinDescription__subtitle}
+        dangerouslySetInnerHTML={{
+          __html: description,
+        }}
+      ></p>
+>>>>>>> 87f5424 (Теперь строка в описании криптовалюты преобразована в html)
     </div>
   );
 };
