@@ -1,8 +1,17 @@
 import React from "react";
-import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-import { formatTime } from "@utils/formatDate";
-import { CoinChartModel } from "@store/models/coinChart";
+
 import RadioButtons from "@components/RadioButtons";
+import { CoinChartModel } from "@store/models/coinChart";
+import { formatTime } from "@utils/formatDate";
+import {
+  Area,
+  AreaChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
+
 import styles from "./CoinChart.module.scss";
 import CustomTooltip from "../CustomTooltip";
 
@@ -23,11 +32,14 @@ const DAYS: Record<string, string | number>[] = [
   { name: "1 M", value: "360" },
   { name: "6 M", value: "2160" },
   { name: "1 Y", value: "4320" },
-  { name: "All", value: "max" }
-]
+  { name: "All", value: "max" },
+];
 
-const CoinChart: React.FC<CoinChartProps> = ({ prices, days, setCurrentDays }: CoinChartProps) => {
-
+const CoinChart: React.FC<CoinChartProps> = ({
+  prices,
+  days,
+  setCurrentDays,
+}: CoinChartProps) => {
   // Для того чтобы график не выходил за пределы блока
   // устанавливаем максимальное значение верхней границы
   let maxPriceCoin: number = 0;
@@ -42,8 +54,8 @@ const CoinChart: React.FC<CoinChartProps> = ({ prices, days, setCurrentDays }: C
         result.push({
           ...prices[i],
           value: prices[i].value.toFixed(2),
-          time: formatTime(prices[i].date)
-        })
+          time: formatTime(prices[i].date),
+        });
         if (prices[i].value > maxPriceCoin) {
           maxPriceCoin = prices[i].value;
         }
@@ -52,19 +64,22 @@ const CoinChart: React.FC<CoinChartProps> = ({ prices, days, setCurrentDays }: C
     return result;
   }, [prices]);
 
-  const setDay = React.useCallback(
-    (value: string) => {
-      setCurrentDays(value);
-    },
-    []
-  );
+  const setDay = React.useCallback((value: string) => {
+    setCurrentDays(value);
+  }, []);
 
   return (
     <div className={styles.coinChart}>
       <h2 className={styles.coinChart__title}>Diagram</h2>
       <ResponsiveContainer width="100%" height={345}>
         <AreaChart data={data}>
-          <Area type="linear" dataKey="value" stroke="#0063F5" fill="url(#colorUv)" strokeWidth={2} />
+          <Area
+            type="linear"
+            dataKey="value"
+            stroke="#0063F5"
+            fill="url(#colorUv)"
+            strokeWidth={2}
+          />
           <XAxis
             dataKey="time"
             minTickGap={15}
@@ -72,7 +87,7 @@ const CoinChart: React.FC<CoinChartProps> = ({ prices, days, setCurrentDays }: C
             padding={{ left: 24, right: 24 }}
             tickSize={8}
           />
-          <YAxis hide={true} type="number" domain={['auto', maxPriceCoin]} />
+          <YAxis hide={true} type="number" domain={["auto", maxPriceCoin]} />
           <Tooltip content={<CustomTooltip />} />
         </AreaChart>
       </ResponsiveContainer>

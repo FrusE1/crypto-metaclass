@@ -1,7 +1,8 @@
 import React from "react";
 
-import styles from "./RadioButtons.module.scss";
 import classNames from "classnames";
+
+import styles from "./RadioButtons.module.scss";
 
 /** Пропсы, которые принимает компонент RadioButtons */
 export type RadioButtonsProps = {
@@ -14,7 +15,7 @@ export type RadioButtonsProps = {
   /** Callback, вызываемый при выборе варианта */
   onChange: (value: string) => void;
   /** Доболнительный класс родительскому элементу */
-  className?: string
+  className?: string;
 };
 
 const RadioButtons: React.FC<RadioButtonsProps> = ({
@@ -22,15 +23,10 @@ const RadioButtons: React.FC<RadioButtonsProps> = ({
   currentValue,
   name,
   onChange,
-  className
+  className,
 }: RadioButtonsProps) => {
   return (
-    <div
-      className={classNames(
-        styles.radioButtons,
-        className
-      )}
-    >
+    <div className={classNames(styles.radioButtons, className)}>
       {items.map((item) => {
         return (
           <label className={styles.radioButtons__label} key={item.value}>

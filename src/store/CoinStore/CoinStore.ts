@@ -8,7 +8,15 @@ import {
 import rootStore from "@store/RootStore";
 import { Meta } from "@utils/meta";
 import axios from "axios";
-import { makeObservable, observable, action, computed, runInAction, IReactionDisposer, reaction } from "mobx";
+import {
+  makeObservable,
+  observable,
+  action,
+  computed,
+  runInAction,
+  IReactionDisposer,
+  reaction,
+} from "mobx";
 
 type PrivateCoinsField = "_coin" | "_loading";
 
@@ -42,7 +50,6 @@ export default class CoinStore implements ILocalStore {
     this._coin = getInitialCoinModel();
 
     try {
-
       const response = await axios.get<CoinApi>(
         `/api/v3/coins/${rootStore.query.path}`
       );
@@ -54,8 +61,7 @@ export default class CoinStore implements ILocalStore {
       runInAction(() => {
         this._loading = Meta.success;
         this._coin = normalizeCoin(response.data);
-      })
-
+      });
     } catch {
       this._loading = Meta.error;
       this._coin = getInitialCoinModel();
@@ -63,11 +69,11 @@ export default class CoinStore implements ILocalStore {
   }
 
   destroy(): void {
-    this._pathReaction()
+    this._pathReaction();
   }
 
   private readonly _pathReaction: IReactionDisposer = reaction(
     () => rootStore.query.path,
     () => this.getCoin()
-  )
+  );
 }
