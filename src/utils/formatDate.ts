@@ -10,7 +10,7 @@ export const formatTime = (miliseconds: number): string => {
     minutes = "0" + minutes;
   }
   return `${hours}:${minutes}`;
-}
+};
 
 export const formatDate = (miliseconds: number): string => {
   const date: Date = new Date(miliseconds);
@@ -18,5 +18,7 @@ export const formatDate = (miliseconds: number): string => {
   if (date.getMonth() + 1 <= 9) {
     month = "0" + month;
   }
-  return `${date.getFullYear()}.${month}.${date.getDate()} ${formatTime(miliseconds)}`
-}
+  return `${date.getFullYear()}.${month}.${date.getDate()} ${formatTime(
+    miliseconds
+  )}`;
+};

@@ -1,5 +1,6 @@
 import React from "react";
 
+import ErrorMessage from "@components/ErrorMessage";
 import Pagination from "@components/Pagination";
 import WithLoader from "@components/WithLoader";
 import { useLocalStore } from "@hooks/useLocaleStore";
@@ -9,11 +10,8 @@ import rootStore from "@store/RootStore";
 import convertNumberToArray from "@utils/convertNumberToArray";
 import { Meta } from "@utils/meta";
 import { observer } from "mobx-react-lite";
-import { Link } from "react-router-dom";
 
-import styles from "./CoinsContainer.module.scss";
 import ListCoins from "../ListCoins";
-import ErrorMessage from "@components/ErrorMessage";
 
 /** Пропсы, которые принимает компонент CoinsContainer */
 export type CoinsContainerProps = {
@@ -35,8 +33,6 @@ const CoinsContainer: React.FC<CoinsContainerProps> = ({
       setPage(1);
     }
   }, [setPage]);
-
-
 
   return (
     <WithLoader loading={coinsStore.loading === Meta.loading}>

@@ -8,7 +8,13 @@ import {
 import rootStore from "@store/RootStore";
 import { Meta } from "@utils/meta";
 import axios from "axios";
-import { makeObservable, observable, action, computed, runInAction, IReactionDisposer, reaction } from "mobx";
+import {
+  makeObservable,
+  observable,
+  action,
+  computed,
+  runInAction,
+} from "mobx";
 
 type PrivateCoinsField = "_chartData" | "_loading" | "_days";
 
@@ -26,7 +32,7 @@ export default class CoinChartStore implements ILocalStore {
       chartData: computed,
       days: computed,
       getPricesChart: action.bound,
-      setDays: action.bound
+      setDays: action.bound,
     });
   }
 
@@ -56,7 +62,6 @@ export default class CoinChartStore implements ILocalStore {
     this._chartData = getInitialCoinChart();
 
     try {
-
       if (!rootStore.query.path) {
         throw new Error();
       }
@@ -74,12 +79,12 @@ export default class CoinChartStore implements ILocalStore {
       runInAction(() => {
         this._loading = Meta.success;
         this._chartData = normalizeCoinChart(response.data);
-      })
+      });
     } catch {
       this._loading = Meta.error;
       this._chartData = getInitialCoinChart();
     }
   }
 
-  destroy(): void { }
+  destroy(): void {}
 }

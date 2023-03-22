@@ -12,7 +12,13 @@ import {
 } from "@store/models/shared/collection";
 import { Meta } from "@utils/meta";
 import axios from "axios";
-import { makeObservable, observable, action, computed, runInAction } from "mobx";
+import {
+  makeObservable,
+  observable,
+  action,
+  computed,
+  runInAction,
+} from "mobx";
 
 type PrivateCoinsField = "_coinsCategory" | "_loading" | "_currentCategory";
 
@@ -76,12 +82,12 @@ export default class CoinsCategoryStore implements ILocalStore {
           normalizeCoinsCategory,
           response.data.length
         );
-      })
+      });
     } catch {
       this._loading = Meta.error;
       this._coinsCategory = getInitialCollectionModel();
     }
   }
 
-  destroy(): void { }
+  destroy(): void {}
 }
