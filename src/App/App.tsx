@@ -15,8 +15,8 @@ function App() {
     <div className={styles.App}>
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/:id" element={<Coin />} />
-        <Route path="*" element={<Error />} />
+        <Route path="/coin/:id" element={<Coin />} />
+        <Route path="/*" element={<Error />} />
       </Routes>
     </div>
   );

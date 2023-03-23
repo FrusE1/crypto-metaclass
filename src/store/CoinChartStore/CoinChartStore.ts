@@ -67,7 +67,7 @@ export default class CoinChartStore implements ILocalStore {
       }
 
       const response = await axios.get<CoinChartApi>(
-        `api/v3/coins/${rootStore.query.path}/market_chart`,
+        `/api/v3/coins/${rootStore.query.path}/market_chart`,
         {
           params: {
             vs_currency: "usd",
@@ -86,5 +86,5 @@ export default class CoinChartStore implements ILocalStore {
     }
   }
 
-  destroy(): void {}
+  destroy(): void { }
 }

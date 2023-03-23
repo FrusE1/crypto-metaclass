@@ -32,7 +32,7 @@ const CoinsContainer: React.FC<CoinsContainerProps> = ({
     if (!rootStore.query.getParam("page")) {
       setPage(1);
     }
-  }, [setPage]);
+  }, [setPage, coinsStore.loading]);
 
   return (
     <WithLoader loading={coinsStore.loading === Meta.loading}>

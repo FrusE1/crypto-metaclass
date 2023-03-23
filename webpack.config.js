@@ -97,6 +97,9 @@ module.exports = {
     port: 9000,
     hot: true,
     historyApiFallback: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
     proxy: {
       '/api/**': {
         target: 'https://api.coingecko.com',

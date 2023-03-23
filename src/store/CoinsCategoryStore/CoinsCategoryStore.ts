@@ -89,5 +89,5 @@ export default class CoinsCategoryStore implements ILocalStore {
     }
   }
 
-  destroy(): void {}
+  destroy(): void { }
 }

@@ -17,7 +17,7 @@ const ListCoins: React.FC<ListCoinsProps> = ({ items }: ListCoinsProps) => {
   const navigate = useNavigate();
 
   const goToPage = (id: string): void => {
-    navigate(`/${id}`);
+    navigate(`/coin/${id}`);
   };
 
   return (
